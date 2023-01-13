@@ -1,24 +1,24 @@
 <script setup>
-  import { ref, onMounted, computed, getCurrentInstance } from "vue";
+  import { ref, onMounted, computed } from "vue";
   import langStore from "../store/lang";
-  import whatsapp from "../assets/images/home/whatsapp@2x(2).png";
+  import isLang from "../utils/isLang";
   /**
-   * 图片
+   * 图片连接引入
    */
+  import whatsapp from "../assets/images/home/whatsapp@2x(2).png";
   import headerQqPng from "../assets/images/home/header-qq.png";
   import qqQrcode from "../assets/images/home/qq-qrcode.png";
   import wechatPng from "../assets/images/home/wechat.png";
   import wechatQrcodePng from "../assets/images/home/wechat-qrcode.png";
 
-  const { proxy } = getCurrentInstance();
   const state = langStore();
   let currentHeight = ref(0); // 页面高度
   const isShowGoTop = ref(false); // 是否展示置顶按钮
 
-  const isZh = computed(() => (proxy.$i18n.locale === "zh" ? true : false));
+  const { isLangEn, isLangZh } = isLang();
 
   const list = computed(() => {
-    if (isZh.value) {
+    if (isLangZh.value) {
       return [
         {
           name: "QQ",
@@ -67,7 +67,7 @@
   //点击
   const clickItem = (ind) => {
     // console.log(window.screen)
-    if (isZh.value && ind < 3) {
+    if (isLangZh.value && ind < 3) {
       return;
     }
     switch (ind) {
@@ -97,16 +97,16 @@
   <div class="right-plugin">
     <div
       v-for="(item, ind) of list"
-      v-show="!isZh"
+      v-show="isLangEn"
       :key="ind"
       class="flex item hide"
       @click="clickItem(ind)"
     >
       <img :src="item.icon" class="item-icon" />
-      <div class="hide">{{ item.name }}</div>
+      <div class="flex items-center hide">{{ item.name }}</div>
     </div>
 
-    <div v-if="state.$state.clientWidth > state.$state.maxWidth && isZh">
+    <div v-if="state.$state.clientWidth > state.$state.maxWidth && isLangZh">
       <el-popover
         v-for="(item, ind) of list"
         :key="ind + 'ss'"
@@ -117,21 +117,21 @@
         <template #reference>
           <div class="flex item hide">
             <img :src="item.icon" class="item-icon" />
-            <div class="hide">{{ item.name }}</div>
+            <div class="flex items-center hide">{{ item.name }}</div>
           </div>
         </template>
         <img :src="item.qrCode" style="width: 200px; height: 200px; display: block" />
       </el-popover>
     </div>
 
-    <div v-if="state.$state.clientWidth < state.$state.maxWidth && !isZh" class="item">
+    <div v-if="state.$state.clientWidth < state.$state.maxWidth && isLangEn" class="item">
       <picture>
         <source srcset="../assets/images/home/mobile-call.png" media="(min-width:992px)" />
         <img src="../assets/images/home/whatsapp@2x.png" class="item-icon" @click="clickItem(0)" />
       </picture>
     </div>
 
-    <div v-if="state.$state.clientWidth < state.$state.maxWidth && isZh" class="item">
+    <div v-if="state.$state.clientWidth < state.$state.maxWidth && isLangZh" class="item">
       <el-popover placement="left-start" :width="220" trigger="click">
         <template #reference>
           <img src="../assets/images/home/wechat.png" class="item-icon" />
@@ -145,11 +145,11 @@
     <div
       v-show="isShowGoTop"
       class="flex item top"
-      :style="isZh ? 'margin:0' : ''"
+      :style="isLangZh ? 'margin:0' : ''"
       @click="clickItem(3)"
     >
       <img src="../assets/images/home/go-top.png" class="item-icon" />
-      <div class="hide">{{ isZh ? "点击回顶部" : "Back to top" }}</div>
+      <div class="flex items-center hide">{{ isLangZh ? "点击回顶部" : "Back to top" }}</div>
     </div>
   </div>
 </template>

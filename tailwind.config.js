@@ -7,8 +7,18 @@ module.exports = {
       999: 999,
     },
     screens: {
-      xs: "500px",
-      lg: "1024px",
+      md: { max: "1024px" },
+      lg: { min: "1024px" },
+      xl: { max: "1200px" },
+    },
+    maxWidth: {
+      full: "100%",
+      "screen-xl": "1200px",
+    },
+    flex: {
+      1: "1 1 0%",
+      basis: "100%",
+      "basis-1/2": "50%",
     },
   },
   variants: {},
