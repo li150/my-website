@@ -213,9 +213,7 @@
             <div class="item-tips">{{ $t("homepage.itemSix.item_1.tips") }}</div>
             <div class="item-tips">{{ $t("homepage.itemSix.item_1.tipsone") }}</div>
           </div>
-          <div v-else class="item-tips"
-            >作为你的全球b2c物流供应商，你便可为你的顾客提供更专业的物流解决方案！尽我们所能，使你不再为物流而担忧。</div
-          >
+          <div v-else class="item-tips">xxx</div>
         </div>
 
         <div class="item">

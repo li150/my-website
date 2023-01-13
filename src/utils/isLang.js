@@ -6,9 +6,7 @@ const langState = langStore();
 const isLang = () => {
   const isLangEn = computed(() => langState.$state.lang !== "en");
   const isLangZh = computed(() => langState.$state.lang !== "en");
-  const langFlag = computed(() =>
-    langState.$state.lang !== "en" ? "必速派国际快递物流" : "Beespal Express",
-  );
+  const langFlag = computed(() => (langState.$state.lang !== "en" ? "biboom" : "biboom"));
   return {
     isLangEn,
     isLangZh,
