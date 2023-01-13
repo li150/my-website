@@ -8,7 +8,7 @@ export default {
     closed: "close",
     1: "Home",
     2: "Service",
-    3: "Order",
+    3: "To be determined",
     4: "About us",
     5: "Review",
     6: "F&Q",

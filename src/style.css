@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* 自定义样式 */
 .margin-auto {
     margin: 0 auto;
 }

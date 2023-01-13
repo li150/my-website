@@ -45,7 +45,7 @@
   let menuLists = reactive([
     { active: false, id: 0, path: "/" },
     { active: false, id: 0, path: "/?type=1" },
-    { active: false, id: 0, path: "/order" },
+    { active: false, id: 0, path: "/determined" },
     { active: false, id: 0, path: "/about" },
     { active: false, id: 0, path: "/review" },
   ]);
@@ -72,7 +72,7 @@
   const hanleOpenMenu = () => {};
 </script>
 <template>
-  <div class="header xs:hidden lg:block">
+  <div class="header md:hidden lg:block">
     <!-- 顶部内容 -->
     <div class="p-5f">
       <div class="flex items-center justify-between h-16">
@@ -119,7 +119,7 @@
     </div>
   </div>
   <!-- pc端菜单 -->
-  <div class="header-menu xs:hidden lg:block">
+  <div class="header-menu md:hidden lg:block">
     <div class="flex header-menu-in">
       <router-link
         v-for="(item, ind) of menuLists"
@@ -146,7 +146,7 @@
   </div>
   <!-- 移动端菜单图标 -->
   <!-- mobile-menu -->
-  <div class="sticky top-0 p-4 bg-white z-999 lg:hidden xs:flex">
+  <div class="sticky top-0 p-4 bg-white z-999 lg:hidden md:flex">
     <img class="flex-shrink-0 w-12" src="../assets/images/header/menu.png" @click="hanleOpenMenu" />
     <div class="flex items-center justify-center flex-1">
       <img class="w-14" src="../assets/images/logo.png" />

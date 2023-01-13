@@ -79,6 +79,7 @@
     });
   };
 
+  // 判断是否是中英文
   const { langFlag, isLangZh, isLangEn } = isLang();
 </script>
 <template>
@@ -86,7 +87,7 @@
     <img src="../assets/images/banner.jpg" alt="背景图" class="" />
   </div>
   <!-- 1 -->
-  <div class="home-item-five">
+  <div class="home-item-one">
     <div class="text-center">
       <h1 class="text-4xl">{{ $t("homepage.itemFive.title") }}</h1>
       <div class="text-base py-7">{{ $t("homepage.itemFive.tips") }}</div>
@@ -125,13 +126,13 @@
     </div>
   </div>
   <!-- 2 -->
-  <div class="home-item-one">
-    <div class="main-in">
+  <div class="home-item-two">
+    <div>
       <div class="title">
         <h1 class="title_one">{{ $t("homepage.itemOne.title") }}</h1>
         <div class="title_two">{{ $t("homepage.itemOne.tips") }}</div>
       </div>
-      <div class="flex justify-between max-w-screen-xl item-list margin-auto">
+      <div class="flex justify-between max-w-screen-xl xl:max-w-full item-list margin-auto">
         <div class="item-list-i">
           <el-image :title="langFlag" :src="imgs[0]" fit="fit" class="item-list-i-bannel" />
           <div class="item-title">{{ $t("homepage.itemOne.one.title") }}</div>
@@ -155,7 +156,7 @@
   </div>
   <!-- 3 -->
   <div class="home-item-three">
-    <div class="flex max-w-screen-xl margin-auto">
+    <div class="flex margin-auto max-w-screen-xl xl:max-w-full">
       <div class="left">
         <h1>{{ $t("homepage.itemThree.title") }}</h1>
         <p>{{ $t("homepage.itemThree.label") }}</p>
@@ -177,8 +178,8 @@
     </div>
   </div>
   <!-- 4 -->
-  <div class="data-detail">
-    <div class="max-w-screen-xl pt-6 pb-16 text-center margin-auto">
+  <div class="home-item-four">
+    <div class="pt-6 pb-16 text-center margin-auto max-w-screen-xl xl:max-w-full">
       <div class="pb-10 title">
         <h1>{{ $t("homepage.itemSix.title") }}</h1>
         <div>{{ $t("homepage.itemSix.tips") }}</div>
@@ -230,7 +231,7 @@
     </div>
   </div>
   <!-- 5 -->
-  <div class="home-item-four">
+  <div class="home-item-five">
     <div class="max-w-screen-xl text-center margin-auto in">
       <h1>{{ $t("homepage.itemFour.title") }}</h1>
       <p class="tips">{{ $t("homepage.itemFour.tips") }}</p>
@@ -262,12 +263,15 @@
 <style scoped lang="scss">
   .banner {
     width: 100%;
+    height: calc(100vh - 134px);
     img {
       width: 100%;
+      height: auto;
+      // object-fit: cover;
     }
   }
 
-  .home-item-five {
+  .home-item-one {
     position: relative;
     padding-top: 50px;
     overflow: hidden;
@@ -401,7 +405,7 @@
     }
   }
 
-  .home-item-one {
+  .home-item-two {
     height: 825px;
     padding: 70px 0 80px 0;
     box-sizing: border-box;
@@ -562,7 +566,7 @@
     }
   }
 
-  .home-item-four {
+  .home-item-five {
     height: 618px;
     position: relative;
 
@@ -634,7 +638,7 @@
     }
   }
 
-  .data-detail {
+  .home-item-four {
     background: rgba(238, 241, 241, 0.92);
 
     .item-list {
