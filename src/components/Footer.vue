@@ -1,0 +1,49 @@
+<script setup>
+  import { ref } from "vue";
+  /**
+   * footerList 底部数据
+   */
+  const footerList = ref([
+    {
+      id: "icp",
+      icon: "safetyIcon",
+      title: "粤ICP备2022015421号",
+      url: "https://beian.miit.gov.cn/",
+    },
+    {
+      id: "bi",
+      icon: "nameIcon",
+      title: "biboom 2022-z",
+    },
+  ]);
+
+  const isFlag = (id) => id === "bi";
+  // 跳转链接
+  const hanleGo = (url) => url && window.open(url);
+</script>
+<template>
+  <div class="flex justify-center py-6 border-t footer">
+    <div
+      v-for="item in footerList"
+      :key="item.id"
+      class="flex items-center text-cyan-500"
+      :class="{ 'pl-12': isFlag(item.id) }"
+    >
+      <!-- <nuxt-icon :name="item.icon" class="svgs" filled /> -->
+      <div class="pl-2" :class="{ 'cursor-pointer': item.url }" @click="hanleGo(item.url)">{{
+        item.title
+      }}</div>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+  .footer {
+    .svgs {
+      // 属性穿透
+      :deep(svg) {
+        margin-bottom: 0;
+      }
+    }
+  }
+</style>
