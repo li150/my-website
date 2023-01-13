@@ -3,14 +3,14 @@
   <img class="bannel" src="../assets/images/review/bannel.png" />
   <div class="max-w-screen-xl py-16 margin-auto">
     <h1>{{ $t("reviewpage.title") }}</h1>
-    <div class="flex justify-between pt-12">
-      <div class="item">
+    <div class="lg:flex justify-between pt-12">
+      <div class="flex-basis-2/3 md:flex-basis md:mx-7 md:mb-6 item">
         <img class="top" src="../assets/images/review/top-icon.png" />
         <div class="title">{{ $t("reviewpage.itemOne.title") }}</div>
         <div class="label">{{ $t("reviewpage.itemOne.label") }}</div>
         <div class="bottom">{{ $t("reviewpage.itemOne.bottom") }}</div>
       </div>
-      <div class="item">
+      <div class="flex-basis-2/3 md:flex-basis md:mx-7 item">
         <img class="top" src="../assets/images/review/top-icon.png" />
         <div class="title">{{ $t("reviewpage.itemTwo.title") }}</div>
         <div class="label">
@@ -35,7 +35,6 @@
   }
 
   .item {
-    flex-basis: 47%;
     height: 384px;
     color: #202020;
     font-size: 16px;

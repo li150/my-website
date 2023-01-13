@@ -166,7 +166,7 @@
     position: fixed;
     z-index: 100;
     right: 0;
-    top: 70%;
+    top: 60vh;
 
     .item {
       width: 151px;

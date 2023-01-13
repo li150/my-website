@@ -19,6 +19,7 @@ module.exports = {
       1: "1 1 0%",
       basis: "100%",
       "basis-1/2": "50%",
+      "basis-2/3": "0 1 48%",
     },
   },
   variants: {},
