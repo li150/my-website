@@ -87,13 +87,13 @@
     <img src="../assets/images/banner.jpg" alt="背景图" class="" />
   </div>
   <!-- 1 -->
-  <div class="home-item-one">
+  <div class="pb-24 home-item-one">
     <div class="text-center">
       <h1 class="text-4xl">{{ $t("homepage.itemFive.title") }}</h1>
-      <div class="text-base py-7">{{ $t("homepage.itemFive.tips") }}</div>
+      <div class="text-base py-8">{{ $t("homepage.itemFive.tips") }}</div>
     </div>
     <div class="main-in">
-      <div class="flex justify-between item-list">
+      <div class="flex justify-between md:hidden item-list">
         <div v-for="(item, ind) of itemFiveList" :key="ind" class="item">
           <img class="item-bg" :src="item.bgUrl" />
           <transition name="el-fade-in-linear">
@@ -123,6 +123,60 @@
         </div>
         <p>{{ $t("homepage.itemFive.bottomTips") }}</p>
       </div>
+      <div class="lg:hidden">
+        <div class="flex justify-evenly mb-8 bg-content">
+          <div class="bgctable1 relative">
+            <img
+              src="../assets/images/home/2022-9-3/Ecommerce-Order.png"
+              class="mx-auto bg-yellow-300"
+              alt=""
+            />
+            <p class="absolute bottom-0 left-0 right-0 text-center">biboom</p>
+          </div>
+          <div class="bgctable2 relative">
+            <img
+              src="../assets/images/home/2022-9-3/Ecommerce-Order.png"
+              class="mx-auto bg-yellow-300"
+              alt=""
+            />
+            <p class="absolute bottom-0 left-0 right-0 text-center">biboom</p>
+          </div>
+          <div class="bgctable3 relative">
+            <img
+              src="../assets/images/home/2022-9-3/Ecommerce-Order.png"
+              class="mx-auto bg-yellow-300"
+              alt=""
+            />
+            <p class="absolute bottom-0 left-0 right-0 text-center">biboom</p>
+          </div>
+        </div>
+        <div class="flex justify-evenly bg-content2">
+          <div class="bgctable1 relative">
+            <img
+              src="../assets/images/home/2022-9-3/Ecommerce-Order.png"
+              class="mx-auto bg-yellow-300"
+              alt=""
+            />
+            <p class="absolute bottom-0 left-0 right-0 text-center">biboom</p>
+          </div>
+          <div class="bgctable2 relative">
+            <img
+              src="../assets/images/home/2022-9-3/Ecommerce-Order.png"
+              class="mx-auto bg-yellow-300"
+              alt=""
+            />
+            <p class="absolute bottom-0 left-0 right-0 text-center">biboom</p>
+          </div>
+          <div class="bgctable3 relative">
+            <img
+              src="../assets/images/home/2022-9-3/Ecommerce-Order.png"
+              class="mx-auto bg-yellow-300"
+              alt=""
+            />
+            <p class="absolute bottom-0 left-0 right-0 text-center">biboom</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <!-- 2 -->
@@ -130,7 +184,7 @@
     <div>
       <div class="title">
         <h1 class="title_one">{{ $t("homepage.itemOne.title") }}</h1>
-        <div class="title_two">{{ $t("homepage.itemOne.tips") }}</div>
+        <div class="py-8 text-lg">{{ $t("homepage.itemOne.tips") }}</div>
       </div>
       <!-- pc端 -->
       <div
@@ -175,9 +229,9 @@
     </div>
   </div>
   <!-- 3 -->
-  <div class="home-item-three">
-    <div class="flex max-w-screen-xl margin-auto xl:max-w-full">
-      <div class="left">
+  <div class="md:bg-gray-200 home-item-three">
+    <div class="flex justify-between max-w-screen-xl margin-auto xl:max-w-full">
+      <div class="left lg:bg-white">
         <h1>{{ $t("homepage.itemThree.title") }}</h1>
         <p>{{ $t("homepage.itemThree.label") }}</p>
         <div class="flex left-item">
@@ -255,10 +309,10 @@
     <div class="max-w-screen-xl text-center margin-auto in">
       <h1>{{ $t("homepage.itemFour.title") }}</h1>
       <p class="tips">{{ $t("homepage.itemFour.tips") }}</p>
-      <div class="flex detail-info">
-        <div><span></span>{{ $t("homepage.itemFour.itemDetail.1") }}</div>
-        <div><span></span>{{ $t("homepage.itemFour.itemDetail.2") }}</div>
-        <div><span></span>{{ $t("homepage.itemFour.itemDetail.3") }}</div>
+      <div class="md:block lg:flex detail-info">
+        <div class="justify-center"><span></span>{{ $t("homepage.itemFour.itemDetail.1") }}</div>
+        <div class="justify-center"><span></span>{{ $t("homepage.itemFour.itemDetail.2") }}</div>
+        <div class="justify-center"><span></span>{{ $t("homepage.itemFour.itemDetail.3") }}</div>
       </div>
       <el-popover v-if="isLangEn" placement="top" :width="220" trigger="click">
         <template #reference>
@@ -422,11 +476,84 @@
           text-align: center;
         }
       }
+
+      .bg-content {
+        div {
+          z-index: 1;
+          height: 26vw;
+          width: 26vw;
+          background-size: cover;
+          &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            content: "";
+            filter: opacity(0.6);
+            background: #fff;
+            z-index: -1;
+          }
+          img {
+            width: 9vw;
+            margin-top: 3vh;
+          }
+          p {
+            padding-bottom: 1.2vh;
+            font-size: 4vw;
+          }
+        }
+        .bgctable1 {
+          background-image: url("../assets/images/home/2022-9-3/Ecommerce-Order(3).jpg");
+        }
+        .bgctable2 {
+          background-image: url("../assets/images/home/2022-9-3/Ecommerce-Order(2).jpg");
+        }
+        .bgctable3 {
+          background-image: url("../assets/images/home/2022-9-3/Ecommerce-Order(3).jpg");
+        }
+      }
+    }
+    .bg-content2 {
+      div {
+        z-index: 1;
+        height: 26vw;
+        width: 26vw;
+        background-size: cover;
+        &::before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          content: "";
+          filter: opacity(0.6);
+          background: #fff;
+          z-index: -1;
+        }
+        img {
+          width: 10vw;
+          margin-top: 3vh;
+        }
+        p {
+          padding-bottom: 1.2vh;
+          font-size: 4vw;
+        }
+      }
+      .bgctable1 {
+        background-image: url("../assets/images/home/2022-9-3/Ecommerce-Order(3).jpg");
+      }
+      .bgctable2 {
+        background-image: url("../assets/images/home/2022-9-3/Ecommerce-Order-bg(3).jpg");
+      }
+      .bgctable3 {
+        background-image: url("../assets/images/home/2022-9-3/Ecommerce-Order-bg(4).jpg");
+      }
     }
   }
 
   .home-item-two {
-    height: 825px;
+    // height: 825px;
     padding: 70px 0 80px 0;
     box-sizing: border-box;
     background: #fff3d9;
@@ -441,12 +568,6 @@
         font-size: 45px;
         line-height: 40px;
         font-weight: 500;
-      }
-
-      div {
-        padding: 34px 0 32px 0;
-        line-height: 24px;
-        font-size: 16px;
       }
     }
 
@@ -508,12 +629,12 @@
     height: 791px;
     padding: 101px 0;
     box-sizing: border-box;
-    background: rgba(255, 243, 217, 0.28);
+    // background: rgba(255, 243, 217, 0.28);
 
     .left {
-      color: #000000;
+      flex: 1;
       height: 576px;
-      background: #ffffff;
+      color: #000000;
       box-shadow: 0px 0px 6px 1px #e4e4e4;
       border-radius: 8px 8px 8px 8px;
       padding: 50px 50px 50px 16px;
@@ -560,10 +681,6 @@
           margin-right: 16px;
           text-align: center;
           background: linear-gradient(93deg, #f3c93a 0%, #f3c93a 100%);
-        }
-
-        p {
-          width: 582px;
         }
       }
 
@@ -707,6 +824,10 @@
   }
 
   @media screen and (max-width: 1024px) {
+    .home-item-one {
+      height: auto;
+      background-image: none;
+    }
     .home-item-two {
       &.mobile {
         .item-list-i {
@@ -715,7 +836,7 @@
           border-radius: 0;
           width: 29.8667vw;
           height: 29.8667vw;
-          margin-top: 10vw;
+          margin-top: 8vw;
           background-color: transparent;
         }
         .items-text {
@@ -724,10 +845,19 @@
       }
     }
     .home-item-three {
+      height: auto;
+      padding: 5.8667vw 3.2vw;
+
       .img {
         width: 29.3333vw;
         height: 50.1333vw;
         margin: 0;
+      }
+
+      .left {
+        height: auto;
+        padding: 0;
+        box-shadow: none;
       }
     }
   }
