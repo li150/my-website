@@ -12,10 +12,6 @@
       type: Boolean,
       required: true,
     },
-    config: {
-      type: Object,
-      required: true,
-    },
   });
   const drawer = computed(() => prpos.drawer);
   const emits = defineEmits(["handleClose", "closed", "changeMenu"]);
@@ -23,12 +19,12 @@
     emits("handleClose", done);
   };
   const hanleClose = () => emits("closed");
-  // 配置
+  // el-drawer配置
   const config = ref({
     direction: "ltr",
     size: "70vw",
     title: "",
-    customClass: "phone-menu",
+    modalClass: "phone-menu",
     showClose: false,
     beforeClose: handleClose,
   });

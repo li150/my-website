@@ -80,7 +80,7 @@
 <template>
   <div class="header md:hidden lg:block">
     <!-- 顶部内容 -->
-    <div class="p-5f">
+    <div class="content">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
           <img src="../assets/images/logo.png" class="w-12 mr-4" />
@@ -159,12 +159,11 @@
     @changeMenu="changeMenu"
   ></DefineDrawer>
   <!-- 移动端菜单图标 -->
-  <!-- mobile-menu -->
-  <div class="sticky top-0 p-4 bg-white z-999 lg:hidden md:flex">
+  <div class="sticky top-0 bg-white z-999 lg:hidden md:flex mobile-menu">
     <img class="flex-shrink-0 w-12" src="../assets/images/header/menu.png" @click="hanleOpenMenu" />
     <div class="flex items-center justify-center flex-1">
       <img class="w-14" src="../assets/images/logo.png" />
-      <div class="ml-2 text-2xl font-bold text-yellow-600">{{ $t("header.title") }}</div>
+      <div class="ml-2 font-bold">{{ $t("header.title") }}</div>
     </div>
   </div>
 </template>
@@ -174,7 +173,7 @@
   .header {
     color: $color-1;
 
-    .p-5f {
+    .content {
       padding: 0 5%;
     }
   }
@@ -199,6 +198,7 @@
         margin: 0 10px;
         font-size: 17px;
         color: #332a00;
+
         cursor: pointer;
         background: none;
         font-weight: bold;
@@ -232,28 +232,15 @@
   }
 
   .mobile-menu {
-    top: 0;
-    z-index: 999;
-    display: flex;
-    color: #332a00;
-    font-size: 4vw;
-    overflow: hidden;
-    position: sticky;
-    font-weight: bold;
-    padding: 0.5em 20px;
-    box-sizing: border-box;
     padding: 0.5em 2.3333vw;
-    background-color: #ffffff;
+    font-size: 4vw;
+    color: #36485e;
 
     img {
       width: 6.4vw;
       height: 6.4vw;
       display: block;
       margin: 0 0.1em;
-    }
-
-    .select {
-      width: 5.3333vw;
     }
   }
 </style>

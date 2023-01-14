@@ -9,69 +9,69 @@
   import _501657450_ from "../assets/images/home/_501657450_.png";
   import _401118931_ from "../assets/images/home/_401118931_.png";
   import EcommerceOrderJpg from "../assets/images/home/2022-9-3/Ecommerce-Order.jpg";
-  import EcommerceOrderPng from "../assets/images/home/2022-9-3/Ecommerce-Order.png";
+  import HTML5Png from "../assets/images/website-skill/HTML5.png";
   import EcommerceOrder2 from "../assets/images/home/2022-9-3/Ecommerce-Order(2).jpg";
-  import EcommerceOrderQueryPng from "../assets/images/home/2022-9-3/Ecommerce-Order-query.png";
+  import CSS3Png from "../assets/images/website-skill/CSS3.png";
   import EcommerceOrderPng3 from "../assets/images/home/2022-9-3/Ecommerce-Order(3).jpg";
-  import EcommerceOrderPng31 from "../assets/images/home/2022-9-3/Ecommerce-Order-3.png";
+  import javascriptMapPng from "../assets/images/website-skill/javascript-map.png";
   import EcommerceOrderBg2 from "../assets/images/home/2022-9-3/Ecommerce-Order-bg(2).jpg";
-  import EcommerceOrderPng4 from "../assets/images/home/2022-9-3/Ecommerce-Order-4.png";
+  import VuePng from "../assets/images/website-skill/Vue.png";
   import EcommerceOrderBgJpg from "../assets/images/home/2022-9-3/Ecommerce-Order-bg(3).jpg";
-  import EcommerceOrderPng5 from "../assets/images/home/2022-9-3/Ecommerce-Order-5.png";
+  import ReactPng from "../assets/images/website-skill/React.png";
   import EcommerceOrderBgJpg4 from "../assets/images/home/2022-9-3/Ecommerce-Order-bg(4).jpg";
-  import EcommerceOrderPng6 from "../assets/images/home/2022-9-3/Ecommerce-Order-6.png";
+  import AngularPng from "../assets/images/website-skill/Angular.png";
 
   const { t } = useI18n();
   // 详情列表
   const arrs = ref([
     {
       bgUrl: EcommerceOrderJpg,
-      icon: EcommerceOrderPng,
-      title: t("homepage.itemFive.item_1.title"),
-      tips: t("homepage.itemFive.item_1.tips"),
+      icon: HTML5Png,
+      title: t("homePage.itemOne.item_1.title"),
+      tips: t("homePage.itemOne.item_1.tips"),
       active: false,
     },
     {
       bgUrl: EcommerceOrder2,
-      icon: EcommerceOrderQueryPng,
-      title: t("homepage.itemFive.item_2.title"),
-      tips: t("homepage.itemFive.item_2.tips"),
+      icon: CSS3Png,
+      title: t("homePage.itemOne.item_2.title"),
+      tips: t("homePage.itemOne.item_2.tips"),
       active: false,
     },
     {
       bgUrl: EcommerceOrderPng3,
-      icon: EcommerceOrderPng31,
-      title: t("homepage.itemFive.item_3.title"),
-      tips: t("homepage.itemFive.item_3.tips"),
+      icon: javascriptMapPng,
+      title: t("homePage.itemOne.item_3.title"),
+      tips: t("homePage.itemOne.item_3.tips"),
       active: false,
     },
     {
       bgUrl: EcommerceOrderBg2,
-      icon: EcommerceOrderPng4,
-      title: t("homepage.itemFive.item_4.title"),
-      tips: t("homepage.itemFive.item_4.tips"),
+      icon: VuePng,
+      title: t("homePage.itemOne.item_4.title"),
+      tips: t("homePage.itemOne.item_4.tips"),
       active: false,
     },
     {
       bgUrl: EcommerceOrderBgJpg,
-      icon: EcommerceOrderPng5,
-      title: t("homepage.itemFive.item_5.title"),
-      tips: t("homepage.itemFive.item_5.tips"),
+      icon: ReactPng,
+      title: t("homePage.itemOne.item_5.title"),
+      tips: t("homePage.itemOne.item_5.tips"),
       active: false,
     },
     {
       bgUrl: EcommerceOrderBgJpg4,
-      icon: EcommerceOrderPng6,
-      title: t("homepage.itemFive.item_6.title"),
-      tips: t("homepage.itemFive.item_6.tips"),
+      icon: AngularPng,
+      title: t("homePage.itemOne.item_6.title"),
+      tips: t("homePage.itemOne.item_6.tips"),
       active: false,
     },
   ]);
   const imgs = [_500675756_, _501657450_, _401118931_];
-  const itemFiveList = computed(() => arrs.value);
+  const itemOneList = computed(() => arrs.value);
 
   // 展示运输服务详情
-  const itemFiveShowDetail = (ind, type) => {
+  const itemOneShowDetail = (ind, type) => {
     arrs.value = arrs.value.map((item, index) => {
       item.active = false;
       if (index === ind && type === 1) item.active = true;
@@ -89,91 +89,83 @@
   <!-- 1 -->
   <div class="pb-24 home-item-one">
     <div class="text-center">
-      <h1 class="text-4xl">{{ $t("homepage.itemFive.title") }}</h1>
-      <div class="text-base py-8">{{ $t("homepage.itemFive.tips") }}</div>
+      <h1 class="text-4xl">{{ $t("homePage.itemOne.title") }}</h1>
+      <div class="text-base py-8">{{ $t("homePage.itemOne.tips") }}</div>
     </div>
-    <div class="main-in">
+    <div class="margin-auto main-in">
       <div class="flex justify-between md:hidden item-list">
-        <div v-for="(item, ind) of itemFiveList" :key="ind" class="item">
+        <div v-for="(item, ind) of itemOneList" :key="ind" class="item">
           <img class="item-bg" :src="item.bgUrl" />
           <transition name="el-fade-in-linear">
             <div v-if="!item.active" class="item-body">
-              <img class="item-icon" :src="item.icon" />
+              <img class="bg-white item-icon" :src="item.icon" />
               <div class="item-title">
-                {{ $t(`homepage.itemFive.item_${ind + 1}.title`) }}
+                {{ $t(`homePage.itemOne.item_${ind + 1}.title`) }}
               </div>
-              <el-button size="mini" class="bottom-icon" @click="itemFiveShowDetail(ind, 1)">
+              <el-button size="small" class="bottom-icon" @click="itemOneShowDetail(ind, 1)">
                 >>>
               </el-button>
             </div>
           </transition>
           <transition name="el-fade-in-linear">
             <div v-if="item.active" class="item-body">
-              <div class="detail" v-html="$t(`homepage.itemFive.item_${ind + 1}.tips`)"></div>
+              <div class="detail" v-html="$t(`homePage.itemOne.item_${ind + 1}.tips`)"></div>
               <el-button
-                size="mini"
+                size="small"
                 class="bottom-icon"
                 style="text-align: right"
-                @click="itemFiveShowDetail(ind)"
+                @click="itemOneShowDetail(ind)"
               >
                 &lt;&lt;&lt;
               </el-button>
             </div>
           </transition>
         </div>
-        <p>{{ $t("homepage.itemFive.bottomTips") }}</p>
+        <p>{{ $t("homePage.itemOne.bottomTips") }}</p>
       </div>
       <div class="lg:hidden">
         <div class="flex justify-evenly mb-8 bg-content">
           <div class="bgctable1 relative">
-            <img
-              src="../assets/images/home/2022-9-3/Ecommerce-Order.png"
-              class="mx-auto bg-yellow-300"
-              alt=""
-            />
-            <p class="absolute bottom-0 left-0 right-0 text-center">biboom</p>
+            <img src="../assets/images/website-skill/HTML5.png" class="mx-auto bg-white" alt="" />
+            <p class="absolute bottom-0 left-0 right-0 text-center">{{
+              $t("homePage.itemOne.item_1.title")
+            }}</p>
           </div>
           <div class="bgctable2 relative">
-            <img
-              src="../assets/images/home/2022-9-3/Ecommerce-Order.png"
-              class="mx-auto bg-yellow-300"
-              alt=""
-            />
-            <p class="absolute bottom-0 left-0 right-0 text-center">biboom</p>
+            <img src="../assets/images/website-skill/CSS3.png" class="mx-auto bg-white" alt="" />
+            <p class="absolute bottom-0 left-0 right-0 text-center">{{
+              $t("homePage.itemOne.item_2.title")
+            }}</p>
           </div>
           <div class="bgctable3 relative">
             <img
-              src="../assets/images/home/2022-9-3/Ecommerce-Order.png"
-              class="mx-auto bg-yellow-300"
+              src="../assets/images/website-skill/javascript-map.png"
+              class="mx-auto bg-white"
               alt=""
             />
-            <p class="absolute bottom-0 left-0 right-0 text-center">biboom</p>
+            <p class="absolute bottom-0 left-0 right-0 text-center">{{
+              $t("homePage.itemOne.item_3.title")
+            }}</p>
           </div>
         </div>
         <div class="flex justify-evenly bg-content2">
           <div class="bgctable1 relative">
-            <img
-              src="../assets/images/home/2022-9-3/Ecommerce-Order.png"
-              class="mx-auto bg-yellow-300"
-              alt=""
-            />
-            <p class="absolute bottom-0 left-0 right-0 text-center">biboom</p>
+            <img src="../assets/images/website-skill/Vue.png" class="mx-auto bg-white" alt="" />
+            <p class="absolute bottom-0 left-0 right-0 text-center">{{
+              $t("homePage.itemOne.item_4.title")
+            }}</p>
           </div>
           <div class="bgctable2 relative">
-            <img
-              src="../assets/images/home/2022-9-3/Ecommerce-Order.png"
-              class="mx-auto bg-yellow-300"
-              alt=""
-            />
-            <p class="absolute bottom-0 left-0 right-0 text-center">biboom</p>
+            <img src="../assets/images/website-skill/React.png" class="mx-auto bg-white" alt="" />
+            <p class="absolute bottom-0 left-0 right-0 text-center">{{
+              $t("homePage.itemOne.item_5.title")
+            }}</p>
           </div>
           <div class="bgctable3 relative">
-            <img
-              src="../assets/images/home/2022-9-3/Ecommerce-Order.png"
-              class="mx-auto bg-yellow-300"
-              alt=""
-            />
-            <p class="absolute bottom-0 left-0 right-0 text-center">biboom</p>
+            <img src="../assets/images/website-skill/Angular.png" class="mx-auto bg-white" alt="" />
+            <p class="absolute bottom-0 left-0 right-0 text-center">{{
+              $t("homePage.itemOne.item_6.title")
+            }}</p>
           </div>
         </div>
       </div>
@@ -183,48 +175,48 @@
   <div class="home-item-two mobile">
     <div>
       <div class="title">
-        <h1 class="title_one">{{ $t("homepage.itemOne.title") }}</h1>
-        <div class="py-8 text-lg">{{ $t("homepage.itemOne.tips") }}</div>
+        <h1 class="title_one">{{ $t("homePage.itemTwo.title") }}</h1>
+        <div class="py-8 text-lg">{{ $t("homePage.itemTwo.tips") }}</div>
       </div>
       <!-- pc端 -->
       <div
         class="flex justify-between max-w-screen-xl xl:max-w-full md:hidden item-list margin-auto"
       >
         <div class="item-list-i">
-          <el-image :title="langFlag" :src="imgs[0]" fit="fit" class="item-list-i-bannel" />
-          <div class="item-title">{{ $t("homepage.itemOne.one.title") }}</div>
-          <div class="item-tips">{{ $t("homepage.itemOne.one.tips") }}</div>
+          <el-image :title="langFlag" :src="imgs[0]" fit="fill" class="item-list-i-bannel" />
+          <div class="item-title">{{ $t("homePage.itemTwo.item_1.title") }}</div>
+          <div class="item-tips">{{ $t("homePage.itemTwo.item_1.detail") }}</div>
           <img src="../assets/images/home/95.png" class="bottom-icon" alt="" />
         </div>
         <div class="item-list-i">
-          <el-image :title="langFlag" :src="imgs[1]" fit="fit" class="item-list-i-bannel" />
-          <div class="item-title">{{ $t("homepage.itemOne.two.title") }}</div>
-          <div class="item-tips">{{ $t("homepage.itemOne.two.tips") }}</div>
+          <el-image :title="langFlag" :src="imgs[1]" fit="fill" class="item-list-i-bannel" />
+          <div class="item-title">{{ $t("homePage.itemTwo.item_2.title") }}</div>
+          <div class="item-tips">{{ $t("homePage.itemTwo.item_2.detail") }}</div>
           <img src="../assets/images/home/96.png" class="bottom-icon" alt="" />
         </div>
         <div class="item-list-i">
-          <el-image :title="langFlag" :src="imgs[2]" fit="fit" class="item-list-i-bannel" />
-          <div class="item-title">{{ $t("homepage.itemOne.three.title") }}</div>
-          <div class="item-tips">{{ $t("homepage.itemOne.three.tips") }}</div>
+          <el-image :title="langFlag" :src="imgs[2]" fit="fill" class="item-list-i-bannel" />
+          <div class="item-title">{{ $t("homePage.itemTwo.item_3.title") }}</div>
+          <div class="item-tips">{{ $t("homePage.itemTwo.item_3.detail") }}</div>
           <img src="../assets/images/home/97.png" class="bottom-icon" alt="" />
         </div>
       </div>
       <!-- 移动端 -->
       <div class="flex justify-between mx-7 lg:hidden item-list">
         <div class="item-list-i">
-          <el-image :src="imgs[0]" fit="fit" class="item-list-i-bannel" />
+          <el-image :src="imgs[0]" fit="fill" class="item-list-i-bannel" />
         </div>
         <div class="item-list-i">
-          <el-image :src="imgs[1]" fit="fit" class="item-list-i-bannel" />
+          <el-image :src="imgs[1]" fit="fill" class="item-list-i-bannel" />
         </div>
         <div class="item-list-i">
-          <el-image :src="imgs[2]" fit="fit" class="item-list-i-bannel" />
+          <el-image :src="imgs[2]" fit="fill" class="item-list-i-bannel" />
         </div>
       </div>
       <div class="flex justify-between text-center mx-7 lg:hidden">
-        <div class="items-text">{{ $t("homepage.itemOne.one.title") }}</div>
-        <div class="items-text">{{ $t("homepage.itemOne.two.title") }}</div>
-        <div class="items-text">{{ $t("homepage.itemOne.three.title") }}</div>
+        <div class="items-text">{{ $t("homePage.itemTwo.item_1.title") }}</div>
+        <div class="items-text">{{ $t("homePage.itemTwo.item_2.title") }}</div>
+        <div class="items-text">{{ $t("homePage.itemTwo.item_3.title") }}</div>
       </div>
     </div>
   </div>
@@ -232,15 +224,15 @@
   <div class="md:bg-gray-200 home-item-three">
     <div class="flex justify-between max-w-screen-xl margin-auto xl:max-w-full">
       <div class="left lg:bg-white">
-        <h1>{{ $t("homepage.itemThree.title") }}</h1>
-        <p>{{ $t("homepage.itemThree.label") }}</p>
+        <h1>{{ $t("homePage.itemThree.title") }}</h1>
+        <p>{{ $t("homePage.itemThree.tips") }}</p>
         <div class="flex left-item">
           <span>01</span>
-          <p>{{ $t("homepage.itemThree.tips_1") }}</p>
+          <p>{{ $t("homePage.itemThree.tips_1") }}</p>
         </div>
         <div class="flex left-item">
           <span>02</span>
-          <p>{{ $t("homepage.itemThree.tips_2") }}</p>
+          <p>{{ $t("homePage.itemThree.tips_2") }}</p>
         </div>
       </div>
       <picture>
@@ -255,8 +247,8 @@
   <div class="home-item-four">
     <div class="max-w-screen-xl pt-6 pb-16 text-center margin-auto xl:max-w-full">
       <div class="pb-10 title">
-        <h1>{{ $t("homepage.itemSix.title") }}</h1>
-        <div>{{ $t("homepage.itemSix.tips") }}</div>
+        <h1 class="text-4xl">{{ $t("homePage.itemFour.title") }}</h1>
+        <div class="pt-4">{{ $t("homePage.itemFour.tips") }}</div>
       </div>
       <div class="flex justify-between md:block item-list">
         <div class="item md:mx-8">
@@ -265,15 +257,9 @@
             class="item-icon"
           />
           <div class="item-title">
-            {{ $t("homepage.itemSix.item_2.title") }}
+            {{ $t("homePage.itemFour.item_1.title") }}
           </div>
-          <div v-if="isLangZh">
-            <div class="item-tips">{{ $t("homepage.itemSix.item_2.tips") }}</div>
-            <div class="item-tips">{{ $t("homepage.itemSix.item_2.tipsone") }}</div>
-          </div>
-          <div v-else class="item-tips"
-            >依托自营专线及合作的国际快递，我们可以为你提供全球范围内的国际运输服务。</div
-          >
+          <div class="item-tips">{{ $t("homePage.itemFour.item_1.tips") }}</div>
         </div>
 
         <div class="item md:mx-8 md:my-20">
@@ -282,13 +268,9 @@
             class="item-icon"
           />
           <div class="item-title">
-            {{ $t("homepage.itemSix.item_1.title") }}
+            {{ $t("homePage.itemFour.item_2.title") }}
           </div>
-          <div v-if="isLangZh">
-            <div class="item-tips">{{ $t("homepage.itemSix.item_1.tips") }}</div>
-            <div class="item-tips">{{ $t("homepage.itemSix.item_1.tipsone") }}</div>
-          </div>
-          <div v-else class="item-tips">xxx</div>
+          <div class="item-tips">{{ $t("homePage.itemFour.item_2.tips") }}</div>
         </div>
 
         <div class="item md:mx-8">
@@ -296,10 +278,11 @@
             src="../assets/images/home/2022-9-3/Snipaste_2022-09-05_14-37-48.png"
             class="item-icon"
           />
+
           <div class="item-title">
-            {{ $t("homepage.itemSix.item_3.title") }}
+            {{ $t("homePage.itemFour.item_3.title") }}
           </div>
-          <div class="item-tips">{{ $t("homepage.itemSix.item_3.tips") }}</div>
+          <div class="item-tips">{{ $t("homePage.itemFour.item_3.tips") }}</div>
         </div>
       </div>
     </div>
@@ -307,12 +290,12 @@
   <!-- 5 -->
   <div class="home-item-five">
     <div class="max-w-screen-xl text-center margin-auto in">
-      <h1>{{ $t("homepage.itemFour.title") }}</h1>
-      <p class="tips">{{ $t("homepage.itemFour.tips") }}</p>
+      <h1>{{ $t("homePage.itemFive.title") }}</h1>
+      <p class="tips">{{ $t("homePage.itemFive.tips") }}</p>
       <div class="md:block lg:flex detail-info">
-        <div class="justify-center"><span></span>{{ $t("homepage.itemFour.itemDetail.1") }}</div>
-        <div class="justify-center"><span></span>{{ $t("homepage.itemFour.itemDetail.2") }}</div>
-        <div class="justify-center"><span></span>{{ $t("homepage.itemFour.itemDetail.3") }}</div>
+        <div class="justify-center"><span></span>{{ $t("homePage.itemFive.item.tips_1") }}</div>
+        <div class="justify-center"><span></span>{{ $t("homePage.itemFive.item.tips_2") }}</div>
+        <div class="justify-center"><span></span>{{ $t("homePage.itemFive.item.tips_3") }}</div>
       </div>
       <el-popover v-if="isLangEn" placement="top" :width="220" trigger="click">
         <template #reference>
@@ -328,7 +311,7 @@
       </div>
 
       <p class="detail-text" @click="detail">
-        {{ $t("homepage.itemFour.detail") }}
+        {{ $t("homePage.itemFive.detail") }}
       </p>
     </div>
   </div>
@@ -370,7 +353,6 @@
     .main-in {
       position: relative;
       max-width: 980px;
-      margin: 0 auto;
 
       .item-list {
         position: absolute;
@@ -384,12 +366,10 @@
           height: 300px;
           margin: 30px 0;
           overflow: hidden;
-          overflow: hidden;
           transition: all 0.4s;
           position: relative;
           border-radius: 10px;
           box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.16);
-          // transition: all 0.4s;
 
           &:hover {
             transform: scale(1.1);
@@ -411,7 +391,7 @@
               padding: 10px;
               display: block;
               margin: 30px auto;
-              background: #f9dc4d;
+              // background: #f9dc4d;
               border-radius: 16px;
             }
 
@@ -459,14 +439,10 @@
           }
 
           .item-bg {
-            top: 0;
-            left: 0;
             z-index: 1;
             width: 100%;
             height: 100%;
-            display: block;
             object-fit: cover;
-            position: absolute;
           }
         }
 
@@ -554,10 +530,9 @@
 
   .home-item-two {
     // height: 825px;
-    padding: 70px 0 80px 0;
+    padding: 70px 0 110px 0;
     box-sizing: border-box;
     background: #fff3d9;
-    // background-image: ;
 
     .title {
       color: #000000;
@@ -609,6 +584,7 @@
           padding: 0 20px;
           font-size: 16px;
           line-height: 28px;
+          text-indent: 32px;
         }
 
         .bottom-icon {
@@ -785,12 +761,12 @@
 
       .item {
         // width: 339px;
+        flex-basis: 32%;
         height: 430px;
         padding: 80px 20px;
         position: relative;
         background: #ffffff;
         border-radius: 12px;
-        box-sizing: border-box;
         box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.16);
         transition: all 0.4s;
 
@@ -841,6 +817,7 @@
         }
         .items-text {
           width: 29.8667vw;
+          padding-top: 1.3vw;
         }
       }
     }

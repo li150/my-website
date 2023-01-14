@@ -13,6 +13,7 @@
 </template>
 <style scoped lang="scss">
   .min-h {
-    min-height: calc(100vh - 4rem - 143px);
+    // 计算内容最低高度
+    min-height: calc(100vh - 6rem - 162px);
   }
 </style>

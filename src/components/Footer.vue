@@ -22,13 +22,14 @@
   const hanleGo = (url) => url && window.open(url);
 </script>
 <template>
-  <div class="flex justify-center py-6 border-t footer">
+  <div class="flex justify-center py-12 border-t footer">
     <div
       v-for="item in footerList"
       :key="item.id"
-      class="flex items-center text-cyan-500"
+      class="flex items-center text-white"
       :class="{ 'pl-12': isFlag(item.id) }"
     >
+      <!-- 图标 -->
       <!-- <nuxt-icon :name="item.icon" class="svgs" filled /> -->
       <div class="pl-2" :class="{ 'cursor-pointer': item.url }" @click="hanleGo(item.url)">{{
         item.title
@@ -38,7 +39,11 @@
 </template>
 
 <style lang="scss" scoped>
+  $define-base-bg: #332a00;
   .footer {
+    background-color: $define-base-bg;
+    font-size: 18px;
+
     .svgs {
       // 属性穿透
       :deep(svg) {
