@@ -83,10 +83,9 @@ export default {
     closed: "close",
     1: "Home",
     2: "Service",
-    3: "To be determined",
-    4: "About us",
+    3: "Project",
+    4: "About me",
     5: "Review",
     6: "F&Q",
-    7: "Get Free Quote",
   },
 };
