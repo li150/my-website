@@ -126,13 +126,16 @@
     </div>
   </div>
   <!-- 2 -->
-  <div class="home-item-two">
+  <div class="home-item-two mobile">
     <div>
       <div class="title">
         <h1 class="title_one">{{ $t("homepage.itemOne.title") }}</h1>
         <div class="title_two">{{ $t("homepage.itemOne.tips") }}</div>
       </div>
-      <div class="flex justify-between max-w-screen-xl xl:max-w-full item-list margin-auto">
+      <!-- pc端 -->
+      <div
+        class="flex justify-between max-w-screen-xl xl:max-w-full md:hidden item-list margin-auto"
+      >
         <div class="item-list-i">
           <el-image :title="langFlag" :src="imgs[0]" fit="fit" class="item-list-i-bannel" />
           <div class="item-title">{{ $t("homepage.itemOne.one.title") }}</div>
@@ -152,11 +155,28 @@
           <img src="../assets/images/home/97.png" class="bottom-icon" alt="" />
         </div>
       </div>
+      <!-- 移动端 -->
+      <div class="flex justify-between mx-7 lg:hidden item-list">
+        <div class="item-list-i">
+          <el-image :src="imgs[0]" fit="fit" class="item-list-i-bannel" />
+        </div>
+        <div class="item-list-i">
+          <el-image :src="imgs[1]" fit="fit" class="item-list-i-bannel" />
+        </div>
+        <div class="item-list-i">
+          <el-image :src="imgs[2]" fit="fit" class="item-list-i-bannel" />
+        </div>
+      </div>
+      <div class="flex justify-between text-center mx-7 lg:hidden">
+        <div class="items-text">{{ $t("homepage.itemOne.one.title") }}</div>
+        <div class="items-text">{{ $t("homepage.itemOne.two.title") }}</div>
+        <div class="items-text">{{ $t("homepage.itemOne.three.title") }}</div>
+      </div>
     </div>
   </div>
   <!-- 3 -->
   <div class="home-item-three">
-    <div class="flex margin-auto max-w-screen-xl xl:max-w-full">
+    <div class="flex max-w-screen-xl margin-auto xl:max-w-full">
       <div class="left">
         <h1>{{ $t("homepage.itemThree.title") }}</h1>
         <p>{{ $t("homepage.itemThree.label") }}</p>
@@ -170,8 +190,8 @@
         </div>
       </div>
       <picture>
-        <source srcset="../assets/images/home/94.png" media="(min-width:992px)" />
-        <source srcset="../assets/images/home/mobele-94.png" media="(max-width:992px)" />
+        <source srcset="../assets/images/home/94.png" media="(min-width:1024px)" />
+        <source srcset="../assets/images/home/mobele-94.png" media="(max-width:1024px)" />
 
         <img class="img" :title="langFlag" src="../assets/home/94.png" />
       </picture>
@@ -179,13 +199,13 @@
   </div>
   <!-- 4 -->
   <div class="home-item-four">
-    <div class="pt-6 pb-16 text-center margin-auto max-w-screen-xl xl:max-w-full">
+    <div class="max-w-screen-xl pt-6 pb-16 text-center margin-auto xl:max-w-full">
       <div class="pb-10 title">
         <h1>{{ $t("homepage.itemSix.title") }}</h1>
         <div>{{ $t("homepage.itemSix.tips") }}</div>
       </div>
-      <div class="flex justify-between item-list">
-        <div class="item">
+      <div class="flex justify-between md:block item-list">
+        <div class="item md:mx-8">
           <img
             src="../assets/images/home/2022-9-3/Snipaste_2022-09-05_14-36-44.png"
             class="item-icon"
@@ -202,7 +222,7 @@
           >
         </div>
 
-        <div class="item">
+        <div class="item md:mx-8 md:my-20">
           <img
             src="../assets/images/home/2022-9-3/Snipaste_2022-09-05_14-34-16.png"
             class="item-icon"
@@ -217,7 +237,7 @@
           <div v-else class="item-tips">xxx</div>
         </div>
 
-        <div class="item">
+        <div class="item md:mx-8">
           <img
             src="../assets/images/home/2022-9-3/Snipaste_2022-09-05_14-37-48.png"
             class="item-icon"
@@ -432,7 +452,8 @@
 
     .item-list {
       .item-list-i {
-        width: 380px;
+        // width: 380px;
+        flex-basis: 32%;
         height: 496px;
         position: relative;
         border-radius: 8px;
@@ -450,7 +471,8 @@
           margin: 0 auto;
           display: block;
           height: 229px;
-          width: 370px;
+          // width: 370px;
+          width: 100%;
         }
 
         .item-title {
@@ -645,7 +667,7 @@
       margin-top: 60px;
 
       .item {
-        width: 339px;
+        // width: 339px;
         height: 430px;
         padding: 80px 20px;
         position: relative;
@@ -680,6 +702,32 @@
           line-height: 32px;
           font-size: 17px;
         }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .home-item-two {
+      &.mobile {
+        .item-list-i {
+          border: none;
+          overflow: hidden;
+          border-radius: 0;
+          width: 29.8667vw;
+          height: 29.8667vw;
+          margin-top: 10vw;
+          background-color: transparent;
+        }
+        .items-text {
+          width: 29.8667vw;
+        }
+      }
+    }
+    .home-item-three {
+      .img {
+        width: 29.3333vw;
+        height: 50.1333vw;
+        margin: 0;
       }
     }
   }

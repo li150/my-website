@@ -8,8 +8,10 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Components: typeof import('./src/components/index.vue')['default']
+    DefineDrawer: typeof import('./src/components/DefineDrawer.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCalendar: typeof import('element-plus/es')['ElCalendar']
+    ElDrawer: typeof import('element-plus/es')['ElDrawer']
     ElImage: typeof import('element-plus/es')['ElImage']
     ElPopover: typeof import('element-plus/es')['ElPopover']
     FixedPlugin: typeof import('./src/components/FixedPlugin.vue')['default']

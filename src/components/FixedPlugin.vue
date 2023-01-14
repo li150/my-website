@@ -126,7 +126,7 @@
 
     <div v-if="state.$state.clientWidth < state.$state.maxWidth && isLangEn" class="item">
       <picture>
-        <source srcset="../assets/images/home/mobile-call.png" media="(min-width:992px)" />
+        <source srcset="../assets/images/home/mobile-call.png" media="(min-width:1024px)" />
         <img src="../assets/images/home/whatsapp@2x.png" class="item-icon" @click="clickItem(0)" />
       </picture>
     </div>
@@ -208,7 +208,7 @@
     }
   }
 
-  @media screen and (max-width: 992px) {
+  @media screen and (max-width: 1024px) {
     .right-plugin {
       top: 60%;
 

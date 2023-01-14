@@ -50,5 +50,13 @@ module.exports = {
     //   },
     // ],
     "vue/multi-word-component-names": "off",
+    "vue/v-on-event-hyphenation": [
+      "error",
+      "always" | "never",
+      {
+        autofix: false,
+        ignore: [],
+      },
+    ],
   },
 };

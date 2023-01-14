@@ -1,5 +1,6 @@
 <script setup>
-  import { computed, getCurrentInstance, nextTick, reactive } from "vue";
+  import { ref, computed, getCurrentInstance, nextTick, reactive } from "vue";
+  import DefineDrawer from "../components/DefineDrawer.vue";
   import langStore from "../store/lang";
   /**
    * 图片链接引入
@@ -41,6 +42,14 @@
     });
   };
 
+  // 抽屉显隐
+  const drawer = ref(false);
+  const closed = () => (drawer.value = false);
+  const handleClose = (done) => {
+    done();
+    closed();
+  };
+  const hanleOpenMenu = () => (drawer.value = true);
   // pc端菜单
   let menuLists = reactive([
     { active: false, id: 0, path: "/" },
@@ -67,9 +76,6 @@
       // });
     });
   };
-
-  //
-  const hanleOpenMenu = () => {};
 </script>
 <template>
   <div class="header md:hidden lg:block">
@@ -144,6 +150,14 @@
       </router-link>
     </div>
   </div>
+  <!-- 移动端菜单 -->
+  <DefineDrawer
+    :menu-list="menuLists"
+    :drawer="drawer"
+    @handleClose="handleClose"
+    @closed="closed"
+    @changeMenu="changeMenu"
+  ></DefineDrawer>
   <!-- 移动端菜单图标 -->
   <!-- mobile-menu -->
   <div class="sticky top-0 p-4 bg-white z-999 lg:hidden md:flex">
