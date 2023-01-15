@@ -1,5 +1,6 @@
 <script setup>
   import { ref } from "vue";
+
   /**
    * footerList 底部数据
    */
@@ -7,16 +8,15 @@
     {
       id: "icp",
       icon: "safetyIcon",
-      title: "粤ICP备2022015421号",
+      title: "icp",
       url: "https://beian.miit.gov.cn/",
     },
     {
       id: "bi",
       icon: "nameIcon",
-      title: "biboom 2022-z",
+      title: "bi",
     },
   ]);
-
   const isFlag = (id) => id === "bi";
   // 跳转链接
   const hanleGo = (url) => url && window.open(url);
@@ -32,7 +32,7 @@
       <!-- 图标 -->
       <!-- <nuxt-icon :name="item.icon" class="svgs" filled /> -->
       <div class="pl-2" :class="{ 'cursor-pointer': item.url }" @click="hanleGo(item.url)">{{
-        item.title
+        $t(`footer.${item.title}`)
       }}</div>
     </div>
   </div>

@@ -54,9 +54,9 @@
   let menuLists = reactive([
     { active: false, id: 0, path: "/" },
     { active: false, id: 0, path: "/?type=1" },
-    { active: false, id: 0, path: "/determined" },
+    { active: false, id: 0, path: "/project" },
     { active: false, id: 0, path: "/about" },
-    { active: false, id: 0, path: "/review" },
+    // { active: false, id: 0, path: "/review" },
   ]);
   const clickIcon = () => {};
 

@@ -21,11 +21,11 @@ const routes = [
     name: tips(`header.${3}`),
     component: () => import(/* webpackChunkName: "project" */ "../view/Project.vue"),
   },
-  {
-    path: "/review",
-    name: tips(`header.${5}`),
-    component: () => import(/* webpackChunkName: "review" */ "../view/Review.vue"),
-  },
+  // {
+  //   path: "/review",
+  //   name: tips(`header.${5}`),
+  //   component: () => import(/* webpackChunkName: "review" */ "../view/Review.vue"),
+  // },
 ];
 
 const router = createRouter({

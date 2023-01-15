@@ -239,7 +239,7 @@
         <source srcset="../assets/images/home/94.png" media="(min-width:1024px)" />
         <source srcset="../assets/images/home/mobele-94.png" media="(max-width:1024px)" />
 
-        <img class="img" :title="langFlag" src="../assets/home/94.png" />
+        <img class="img" :title="langFlag" src="../assets/images/home/94.png" />
       </picture>
     </div>
   </div>
