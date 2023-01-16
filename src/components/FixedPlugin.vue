@@ -1,6 +1,6 @@
 <script setup>
   import { ref, onMounted, computed } from "vue";
-  import langStore from "../store/lang";
+  import { useLang } from "../store/lang";
   import isLang from "../utils/isLang";
   /**
    * 图片连接引入
@@ -11,7 +11,7 @@
   import wechatPng from "../assets/images/home/wechat.png";
   import wechatQrcodePng from "../assets/images/home/wechat-qrcode.png";
 
-  const state = langStore();
+  const state = useLang();
   let currentHeight = ref(0); // 页面高度
   const isShowGoTop = ref(false); // 是否展示置顶按钮
 

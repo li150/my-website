@@ -1,7 +1,7 @@
 <script setup>
   import { ref, nextTick, getCurrentInstance, computed, watchEffect } from "vue";
-  import langStore from "../store/lang";
-  const langState = langStore();
+  import { useLang } from "../store/lang";
+  const langState = useLang();
 
   const prpos = defineProps({
     menuList: {
@@ -42,8 +42,10 @@
     const lang = localStorage.getItem("lang") === "zh" ? "en" : "zh";
     nextTick(() => {
       localStorage.setItem("lang", lang);
+      console.log(lang, ":lang");
       proxy.$i18n.locale = lang;
-      langState.updateLang(lang);
+      // langState.$state.lang = lang;
+      // langState.updateLang(lang);
     });
   };
 

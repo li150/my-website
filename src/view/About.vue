@@ -17,7 +17,9 @@
     <div class="max-w-screen-xl margin-auto ptb-64">
       <div class="flex mb-10 md:mx-7 md:mb-7">
         <div class="flex-basis-1/2 md:flex-basis p-8 left">
-          <h1 class="mb-4">{{ $t("aboutPage.skills.title") }}</h1>
+          <h1 class="mb-4">
+            {{ $t("aboutPage.skills.title") }}
+          </h1>
           <div>
             <ul class="ul-list">
               <li v-for="item in 8"
@@ -60,6 +62,7 @@
 </template>
 
 <style scoped lang="scss">
+  $color-1: #f9dc4d;
   .about {
     .ptb-64 {
       padding-top: 74px;

@@ -46,8 +46,8 @@
     <h2 class="text-center py-6 text-2xl font-bold">{{ $t("porjectPage.title") }}</h2>
     <div class="project-list">
       <div class="flex relative p-4 mb-10 item" v-for="(item, index) in projectList">
-        <div class="flex-1">
-          <img :src="item.bj" alt="" />
+        <div class="flex-1 overflow-hidden">
+          <img :src="item.bj" alt="" class="img" />
         </div>
         <div class="flex-1 p-3">
           <div class="relative my-2 title">
@@ -73,6 +73,14 @@
       .item {
         flex-direction: column;
         box-shadow: 0 3px 15px rgb(0 0 0 / 16%);
+        .img {
+          transition: transform 1s;
+        }
+        &:hover {
+          .img {
+            transform: scale3d(1.3, 1.3, 1.3);
+          }
+        }
         .title {
           &::before {
             position: absolute;

@@ -2,6 +2,7 @@
   import { ref, computed } from "vue";
   import { useI18n } from "vue-i18n";
   import isLang from "../utils/isLang";
+  import DefineCarousel from "../components/DefineCarousel.vue";
   /**
    * 图片链接引入
    */
@@ -81,6 +82,20 @@
 
   // 判断是否是中英文
   const { langFlag, isLangZh, isLangEn } = isLang();
+
+  // 轮播图切换
+  const carouselConfig = ref({
+    height: "26.5vw",
+    direction: "vertical",
+    autoplay: true,
+    initialIndex: 0,
+    interval: 3000,
+  });
+  const carouselList = ref([1, 2]);
+  const currentIndex = ref(0);
+  const hanlechange = (index) => {
+    currentIndex.value = index;
+  };
 </script>
 <template>
   <div class="banner">
@@ -226,21 +241,29 @@
       <div class="left lg:bg-white">
         <h1>{{ $t("homePage.itemThree.title") }}</h1>
         <p>{{ $t("homePage.itemThree.tips") }}</p>
-        <div class="flex left-item">
+        <div class="flex left-item" :class="{ 'translate-side': currentIndex === 0 }">
           <span>01</span>
           <p>{{ $t("homePage.itemThree.tips_1") }}</p>
         </div>
-        <div class="flex left-item">
+        <div class="flex left-item" :class="{ 'translate-side': currentIndex === 1 }">
           <span>02</span>
           <p>{{ $t("homePage.itemThree.tips_2") }}</p>
         </div>
       </div>
-      <picture>
-        <source srcset="../assets/images/home/94.png" media="(min-width:1024px)" />
-        <source srcset="../assets/images/home/mobele-94.png" media="(max-width:1024px)" />
-
-        <img class="img" :title="langFlag" src="../assets/images/home/94.png" />
-      </picture>
+      <div class="relative flex-basis-1/3">
+        <div class="absolute defin-carouse">
+          <DefineCarousel
+            v-bind="carouselConfig"
+            :carousel-list="carouselList"
+            @change="hanlechange"
+          ></DefineCarousel>
+        </div>
+        <picture>
+          <source srcset="../assets/images/home/94.png" media="(min-width:1024px)" />
+          <source srcset="../assets/images/home/mobele-94.png" media="(max-width:1024px)" />
+          <img class="img" :title="langFlag" src="../assets/images/home/94.png" />
+        </picture>
+      </div>
     </div>
   </div>
   <!-- 4 -->
@@ -631,6 +654,11 @@
         color: #333333;
         line-height: 42px;
         padding-top: 37px;
+        transition: transform 1s;
+
+        &.translate-side {
+          transform: translateX(36px);
+        }
 
         &:nth-child(4) {
           padding-bottom: 18px;
@@ -673,11 +701,22 @@
       }
     }
 
+    .defin-carouse {
+      top: 8%;
+      left: 26.1%;
+      right: 16.6%;
+      bottom: 6%;
+      border-radius: 5%;
+      overflow: hidden;
+      background-color: blue;
+    }
+
     .img {
       display: block;
-      width: 400px;
+      // width: 400px;
       height: 584px;
-      margin-left: 24px;
+      // margin-left: 24px;
+      padding-left: 24px;
     }
   }
 

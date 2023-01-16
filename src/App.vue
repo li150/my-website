@@ -1,7 +1,21 @@
 <script setup>
+  import { onMounted, getCurrentInstance } from "vue";
   import Header from "./components/Header.vue";
   import Footer from "./components/Footer.vue";
   import FixedPlugin from "./components/FixedPlugin.vue";
+  import { getGeoip } from "./utils/utils";
+  import { useLang } from "./store/lang";
+
+  const { proxy } = getCurrentInstance();
+  const lang = useLang();
+
+  onMounted(() => {
+    getGeoip().then((iso_code) => {
+      console.log(iso_code, ";iso_code");
+      const lang = iso_code === "CN" ? "zh" : "en";
+      proxy.$i18n.locale = lang;
+    });
+  });
 </script>
 <template>
   <Header></Header>

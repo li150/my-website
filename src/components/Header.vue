@@ -1,7 +1,7 @@
 <script setup>
   import { ref, computed, getCurrentInstance, nextTick, reactive } from "vue";
   import DefineDrawer from "../components/DefineDrawer.vue";
-  import langStore from "../store/lang";
+  import { useLang } from "../store/lang";
   /**
    * 图片链接引入
    */
@@ -12,7 +12,7 @@
   import phoneCall from "../assets/images/header/phone-call.png";
 
   const { proxy } = getCurrentInstance();
-  const langState = langStore();
+  const langState = useLang();
   /**
    * 联系图标
    */
@@ -36,7 +36,10 @@
   // 中英文切换
   const changeLang = () => {
     const lang = langState.$state.lang === "zh" ? "en" : "zh";
+    console.log(langState, ":langState.$state.lang", lang);
+    // langState.updateLang(lang);
     langState.updateLang(lang);
+    // langState.$state.lang = lang;
     nextTick(() => {
       proxy.$i18n.locale = lang;
     });
@@ -150,14 +153,6 @@
       </router-link>
     </div>
   </div>
-  <!-- 移动端菜单 -->
-  <DefineDrawer
-    :menu-list="menuLists"
-    :drawer="drawer"
-    @handleClose="handleClose"
-    @closed="closed"
-    @changeMenu="changeMenu"
-  ></DefineDrawer>
   <!-- 移动端菜单图标 -->
   <div class="sticky top-0 bg-white z-999 lg:hidden md:flex mobile-menu">
     <img class="flex-shrink-0 w-12" src="../assets/images/header/menu.png" @click="hanleOpenMenu" />
@@ -165,6 +160,14 @@
       <img class="w-14" src="../assets/images/logo.png" />
       <div class="ml-2 font-bold">{{ $t("header.title") }}</div>
     </div>
+    <!-- 移动端菜单 -->
+    <DefineDrawer
+      :menu-list="menuLists"
+      :drawer="drawer"
+      @handleClose="handleClose"
+      @closed="closed"
+      @changeMenu="changeMenu"
+    ></DefineDrawer>
   </div>
 </template>
 
