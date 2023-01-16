@@ -1,4 +1,4 @@
-// tailwind.config.js
+// tailwind.config.js;
 module.exports = {
   content: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx,vue}"],
   theme: {
@@ -19,6 +19,7 @@ module.exports = {
       1: "1 1 0%",
       basis: "100%",
       "basis-1/2": "50%",
+      "basis-1/3": "0 1 34%",
       "basis-2/3": "0 1 48%",
     },
   },
