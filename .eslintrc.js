@@ -16,6 +16,15 @@ module.exports = {
     },
   },
   extends: ["plugin:vue/vue3-recommended", "plugin:prettier/recommended"],
+  ignorePatterns: ["*.config.js"],
+  overrides: [
+    {
+      files: ["*.config.js"],
+      env: {
+        node: true,
+      },
+    },
+  ],
   rules: {
     // "vue/script-setup-uses-vars": "error",
     // "vue/custom-event-name-casing": "off",
