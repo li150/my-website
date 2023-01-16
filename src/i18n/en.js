@@ -48,32 +48,40 @@ export default {
         detail:
           "Familiar with the use of front-end technology to restore the design draft, and can deal with the compatibility of different mobile phones, as well as other third-party libraries",
       },
-      itemFour: {
-        title: "Outcome of the project",
-        tips: "Learning on the road can only insist ~",
-        item_1: {
-          title: "Tower backstage management system",
-          tips: "Tower backstage management system",
-        },
-        item_2: {
-          title: "(PC, mobile) response type official website",
-          tips: "(PC, mobile) response type official website",
-        },
-        item_3: {
-          title: "Jun Feng small program",
-          tips: "Jun Feng small program",
-        },
+    },
+    itemThree: {
+      title: "Presentation of project",
+      tips: "Learning on the road can only insist ~",
+      tips_1:
+        "Microstation Project - In process: Wheel cast or move into display right for picture",
+      tips_2:
+        "Microstation Project - In process: Wheel cast or move into display right for picture",
+    },
+    itemFour: {
+      title: "Outcome of the project",
+      tips: "Learning on the road can only insist ~",
+      item_1: {
+        title: "Tower backstage management system",
+        tips: "Tower backstage management system",
       },
-      itemFive: {
-        title: "Motivational quote",
-        tips: "Learning on the road can only insist ~",
-        item: {
-          tips_1: "Every good person, there is a silent time behind",
-          tips_2: "Today's dream has become the hope of the Ming Dynasty",
-          tips_3: "Give yourself credit that you are stronger than you think",
-        },
-        detail: "15016400000",
+      item_2: {
+        title: "(PC, mobile) response type official website",
+        tips: "(PC, mobile) response type official website",
       },
+      item_3: {
+        title: "Jun Feng small program",
+        tips: "Jun Feng small program",
+      },
+    },
+    itemFive: {
+      title: "Motivational quote",
+      tips: "Learning on the road can only insist ~",
+      item: {
+        tips_1: "Every good person, there is a silent time behind",
+        tips_2: "Today's dream has become the hope of the Ming Dynasty",
+        tips_3: "Give yourself credit that you are stronger than you think",
+      },
+      detail: "15016400000",
     },
   },
   aboutPage: {

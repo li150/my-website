@@ -1,5 +1,6 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createMemoryHistory, createWebHistory } from "vue-router";
 import i18n from "../i18n";
+import { isSSR } from "../utils/utils";
 /**
  * 在外部没有setup函数使用i18n
  */
@@ -28,9 +29,14 @@ const routes = [
   // },
 ];
 
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes,
-});
+// const router = createRouter({
+//   history: isSSR ? createWebHistory() : createMemoryHistory(),
+//   routes,
+// });
 
-export default router;
+export default function () {
+  return createRouter({
+    history: isSSR ? createWebHistory() : createMemoryHistory(),
+    routes,
+  });
+}

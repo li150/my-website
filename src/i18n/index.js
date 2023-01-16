@@ -1,6 +1,7 @@
 import { createI18n } from "vue-i18n";
 import zh from "./zh";
 import en from "./en";
+import { isSSR } from "../utils/utils";
 
 const message = {
   zh: { ...zh },
@@ -9,16 +10,16 @@ const message = {
 
 // 当前语言状态
 const getCurrentLanguage = () => {
-  const UAlong = navigator.language; // zh-CN
-  const langCode = UAlong.indexOf("zh") !== -1 ? "zh" : "en";
-  localStorage.setItem("lang", langCode);
+  const UAlong = isSSR && navigator.language; // zh-CN
+  const langCode = isSSR && UAlong.indexOf("zh") !== -1 ? "zh" : "en";
+  isSSR && localStorage.setItem("lang", langCode);
   return langCode;
 };
+
 const i18n = createI18n({
   legacy: false,
   messages: message,
   globalInjection: true,
-  locale: getCurrentLanguage() || "en",
+  locale: getCurrentLanguage() || "zh",
 });
-
 export default i18n;

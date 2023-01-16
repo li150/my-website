@@ -3,9 +3,11 @@ import "./style.css";
 import App from "./App.vue";
 // 完全引入element-plus
 // import ElementPlus from "element-plus";
+// import "element-plus/dist/index.css";
+import ElementPlus, { ID_INJECTION_KEY } from "element-plus";
 import "element-plus/dist/index.css";
 // import * as ElementPlusIconsVue from "@element-plus/icons-vue";
-import router from "./router";
+import routers from "./router";
 import i18n from "./i18n";
 import { createPinia } from "pinia";
 
@@ -18,6 +20,14 @@ import { createPinia } from "pinia";
 
 export default function createApp() {
   const app = createSSRApp(App);
+  const router = routers();
   const pinia = createPinia();
-  app.use(router).use(i18n).use(pinia);
+  app.use(ElementPlus).provide(ID_INJECTION_KEY, {
+    prefix: 100,
+    current: 0,
+  });
+  app.use(i18n);
+  app.use(router);
+  app.use(pinia);
+  return { app, router, pinia };
 }
