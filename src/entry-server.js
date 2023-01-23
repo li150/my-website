@@ -1,10 +1,11 @@
 import createApp from "./main";
 import { renderToString } from "@vue/server-renderer";
+import devalue from "@nuxt/devalue";
 /**
  * 返回生成html字符及pinia数据
  */
 export async function render(url) {
-  const { app, router, pinia } = createApp();
+  const { app, router, initialState } = createApp();
 
   // 先加载一个页面
   router.push(url);
@@ -14,5 +15,8 @@ export async function render(url) {
   // 获取页面的HTML字符串
   const html = await renderToString(app, ctx);
 
-  return { html, piniaState: JSON.stringify(pinia.state.value) };
+  // https://pinia.vuejs.org/ssr/#state-hydration
+  const piniaState = devalue(initialState.pinia);
+
+  return [html, piniaState];
 }

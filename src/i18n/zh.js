@@ -6,27 +6,27 @@ export default {
       tips: "学习路上只能坚持~",
       item_1: {
         title: "HTML5",
-        tips: "HTML5",
+        tips: "HTML，超文本标记语言,可用于描述网页文档的一种标记语言",
       },
       item_2: {
         title: "CSS3",
-        tips: "CSS3",
+        tips: "CSS3可用于控制Web页面的外观",
       },
       item_3: {
         title: "JavaScript",
-        tips: "JavaScript",
+        tips: "JavaScript是一种脚本，一门编程语言，它可以在网页上实现复杂的功能",
       },
       item_4: {
         title: "Vue",
-        tips: "Vue",
+        tips: "Vue是一套用于构建用户界面的渐进式框架",
       },
       item_5: {
         title: "React",
-        tips: "React",
+        tips: "React是由Facebook开源的一个进行创建用户界面的一款JavaScript库",
       },
       item_6: {
         title: "Angular",
-        tips: "Angular",
+        tips: "Angular是一个客户端的JavaScript MVC框架，用于开发动态Web应用程序",
       },
       bottomTips: "学习路上只能坚持~",
     },
@@ -163,5 +163,6 @@ export default {
   footer: {
     icp: "粤ICP备2022015421号",
     bi: "biboom 2022-z",
+    top: "点击回顶部",
   },
 };

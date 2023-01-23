@@ -1,7 +1,7 @@
 import { createI18n } from "vue-i18n";
 import zh from "./zh";
 import en from "./en";
-import { isSSR } from "../utils/utils";
+import { getGeoip, isSSR } from "../utils/utils";
 
 const message = {
   zh: { ...zh },
@@ -20,6 +20,12 @@ const i18n = createI18n({
   legacy: false,
   messages: message,
   globalInjection: true,
-  locale: getCurrentLanguage() || "zh",
+  locale: "zh",
+});
+
+getGeoip().then((iso_code) => {
+  const lang = iso_code === "CN" ? "zh" : "en";
+  i18n.global.locale = lang;
+  // console.log(lang, "lang---lang");
 });
 export default i18n;

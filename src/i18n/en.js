@@ -168,5 +168,6 @@ export default {
   footer: {
     icp: "Guangdong ICP 20220154211",
     bi: "biboom 2022-z",
+    top: "Back to top",
   },
 };
