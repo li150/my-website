@@ -4,18 +4,18 @@
   import Footer from "./components/Footer.vue";
   import FixedPlugin from "./components/FixedPlugin.vue";
   import { getGeoip } from "./utils/utils";
-  import { useLang } from "./store/lang";
+  import useLang from "./store/modules/lang";
 
   const { proxy } = getCurrentInstance();
+  console.log(useLang(), ":useLang");
   const lang = useLang();
 
-  onMounted(() => {
-    getGeoip().then((iso_code) => {
-      console.log(iso_code, ";iso_code");
-      const lang = iso_code === "CN" ? "zh" : "en";
-      proxy.$i18n.locale = lang;
-    });
-  });
+  // onMounted(() => {
+  //   getGeoip().then((iso_code) => {
+  //     const lang = iso_code === "CN" ? "zh" : "en";
+  //     proxy.$i18n.locale = lang;
+  //   });
+  // });
 </script>
 <template>
   <Header></Header>

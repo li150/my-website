@@ -1,6 +1,6 @@
 <script setup>
   import { ref, nextTick, getCurrentInstance, computed, watchEffect } from "vue";
-  import { useLang } from "../store/lang";
+  import useLang from "../store/modules/lang";
   const langState = useLang();
 
   const prpos = defineProps({
@@ -69,7 +69,7 @@
     </template>
     <div class="phone-menu">
       <!-- 移动菜单栏 按钮-->
-      <router-link v-for="(item, ind) of prpos.menuList" :key="ind" :to="item.path">
+      <router-link v-for="(item, ind) of menuList" :key="ind" :to="item.path">
         <el-button :class="item.active ? 'menu-item active' : 'menu-item'" @click="changeMenu(ind)">
           {{ $t(`header.${ind + 1}`) }}
         </el-button>

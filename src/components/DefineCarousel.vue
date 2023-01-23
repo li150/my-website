@@ -8,25 +8,18 @@
 <template>
   <el-carousel v-bind="$attrs">
     <el-carousel-item v-for="item in props.carouselList" :key="item">
-      <h3 text="2xl" justify="center">{{ item }}</h3>
+      <img class="img" src="../assets/images/website-skill/app1.webp" alt="" />
     </el-carousel-item>
   </el-carousel>
 </template>
 
 <style scoped lang="scss">
-  .el-carousel__item h3 {
-    color: #475669;
-    opacity: 0.75;
-    line-height: 200px;
-    margin: 0;
-    text-align: center;
+  .img {
+    height: 100%;
+    object-fit: cover;
   }
-
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
-
-  .el-carousel__item:nth-child(2n + 1) {
-    background-color: #d3dce6;
+  .el-carousel--vertical,
+  .el-carousel__container {
+    height: 100% !important;
   }
 </style>

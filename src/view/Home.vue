@@ -21,6 +21,7 @@
   import ReactPng from "../assets/images/website-skill/React.png";
   import EcommerceOrderBgJpg4 from "../assets/images/home/2022-9-3/Ecommerce-Order-bg(4).jpg";
   import AngularPng from "../assets/images/website-skill/Angular.png";
+  import iphonePng from "../assets/images/iphone.png";
 
   const { t } = useI18n();
   // 详情列表
@@ -85,7 +86,8 @@
 
   // 轮播图切换
   const carouselConfig = ref({
-    height: "26.5vw",
+    // height: "26.5vw",
+    height: "100%",
     direction: "vertical",
     autoplay: true,
     initialIndex: 0,
@@ -250,19 +252,29 @@
           <p>{{ $t("homePage.itemThree.tips_2") }}</p>
         </div>
       </div>
-      <div class="relative flex-basis-1/3">
-        <div class="absolute defin-carouse">
+      <div class="relative iphone-warp">
+        <!-- <div class="absolute defin-carouse">
           <DefineCarousel
             v-bind="carouselConfig"
             :carousel-list="carouselList"
             @change="hanlechange"
           ></DefineCarousel>
+        </div> -->
+        <div class="absolute top-0 left-0 right-0 bottom-0 iphone">
+          <img class="absolute top-0 left-0 right-0 bottom-0" :src="iphonePng" alt="" />
+          <div class="absolute defin-carouse">
+            <DefineCarousel
+              v-bind="carouselConfig"
+              :carousel-list="carouselList"
+              @change="hanlechange"
+            ></DefineCarousel>
+          </div>
         </div>
-        <picture>
+        <!-- <picture>
           <source srcset="../assets/images/home/94.png" media="(min-width:1024px)" />
           <source srcset="../assets/images/home/mobele-94.png" media="(max-width:1024px)" />
           <img class="img" :title="langFlag" src="../assets/images/home/94.png" />
-        </picture>
+        </picture> -->
       </div>
     </div>
   </div>
@@ -440,12 +452,13 @@
               left: 50%;
               width: 253px;
               font-size: 16px;
-              text-align: center;
+              text-align: left;
               line-height: 38px;
               position: absolute;
               letter-spacing: 1px;
-              word-break: keep-all;
+              // word-break: keep-all;
               transform: translate(-50%, -50%);
+              text-indent: 32px;
             }
           }
 
@@ -702,13 +715,28 @@
     }
 
     .defin-carouse {
-      top: 8%;
-      left: 26.1%;
-      right: 16.6%;
-      bottom: 6%;
-      border-radius: 5%;
+      // top: 11.9%;
+      // left: 14%;
+      // right: 25.5%;
+      // bottom: 12%;
+      top: 66px;
+      left: 49px;
+      right: 92px;
+      bottom: 70px;
       overflow: hidden;
-      background-color: blue;
+      // background-color: blue;
+    }
+
+    .iphone-warp {
+      flex-basis: 362px;
+      flex-shrink: 0;
+
+      .iphone {
+        // top: -38px;
+        img {
+          height: 100%;
+        }
+      }
     }
 
     .img {

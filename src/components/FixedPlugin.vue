@@ -1,6 +1,6 @@
 <script setup>
   import { ref, onMounted, computed } from "vue";
-  import { useLang } from "../store/lang";
+  import useLang from "../store/modules/lang";
   import isLang from "../utils/isLang";
   /**
    * 图片连接引入
@@ -47,7 +47,7 @@
 
     // 监听宽度
     window.onresize = () => {
-      state.$state.clientWidth = document.body.clientWidth;
+      state.clientWidth = document.body.clientWidth;
       currentHeight.value = document.body.clientHeight - window.innerHeight + 10;
     };
 
@@ -56,7 +56,7 @@
       //滚动的高度
       const moveHeight =
         document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset;
-      if (state.$state.clientWidth >= state.$state.maxWidth) {
+      if (state.clientWidth >= state.maxWidth) {
         isShowGoTop.value = moveHeight - 800 >= 0;
       } else {
         isShowGoTop.value = currentHeight.value / 2 - moveHeight <= 0;
@@ -73,7 +73,7 @@
     switch (ind) {
       case 0:
         let url = `https://wa.me/+8616676308682`;
-        if (state.$state.clientWidth < state.$state.maxWidth) {
+        if (state.clientWidth < state.maxWidth) {
           url = "https://wa.me/message/PBTGMXFBQYE3B1";
         }
         window.open(url);
@@ -106,7 +106,7 @@
       <div class="flex items-center hide">{{ item.name }}</div>
     </div>
 
-    <div v-if="state.$state.clientWidth > state.$state.maxWidth && isLangZh">
+    <div v-if="state.clientWidth > state.maxWidth && isLangZh">
       <el-popover
         v-for="(item, ind) of list"
         :key="ind + 'ss'"
@@ -124,14 +124,14 @@
       </el-popover>
     </div>
 
-    <div v-if="state.$state.clientWidth < state.$state.maxWidth && isLangEn" class="item">
+    <div v-if="state.clientWidth < state.maxWidth && isLangEn" class="item">
       <picture>
         <source srcset="../assets/images/home/mobile-call.png" media="(min-width:1024px)" />
         <img src="../assets/images/home/whatsapp@2x.png" class="item-icon" @click="clickItem(0)" />
       </picture>
     </div>
 
-    <div v-if="state.$state.clientWidth < state.$state.maxWidth && isLangZh" class="item">
+    <div v-if="state.clientWidth < state.maxWidth && isLangZh" class="item">
       <el-popover placement="left-start" :width="220" trigger="click">
         <template #reference>
           <img src="../assets/images/home/wechat.png" class="item-icon" />
@@ -149,7 +149,7 @@
       @click="clickItem(3)"
     >
       <img src="../assets/images/home/go-top.png" class="item-icon" />
-      <div class="flex items-center hide">{{ isLangZh ? "点击回顶部" : "Back to top" }}</div>
+      <div class="flex items-center hide">{{ $t("footer.top") }}</div>
     </div>
   </div>
 </template>

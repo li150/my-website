@@ -1,5 +1,4 @@
 <script setup>
-  import {} from "vue";
   import isLang from "../utils/isLang";
   // 判断是否是中英文
   const { langFlag } = isLang();

@@ -1,7 +1,7 @@
 <script setup>
   import { ref, computed, getCurrentInstance, nextTick, reactive } from "vue";
   import DefineDrawer from "../components/DefineDrawer.vue";
-  import { useLang } from "../store/lang";
+  import useLang from "../store/modules/lang";
   /**
    * 图片链接引入
    */
@@ -16,7 +16,7 @@
   /**
    * 联系图标
    */
-  const isZh = computed(() => langState.$state.lang === "zh");
+  const isZh = computed(() => langState.lang === "zh");
   // 中英图标显示
   const imgs = computed(() => {
     if (isZh.value) {
@@ -35,13 +35,12 @@
   });
   // 中英文切换
   const changeLang = () => {
-    const lang = langState.$state.lang === "zh" ? "en" : "zh";
-    console.log(langState, ":langState.$state.lang", lang);
-    // langState.updateLang(lang);
-    langState.updateLang(lang);
-    // langState.$state.lang = lang;
+    const lang = langState.lang === "zh" ? "en" : "zh";
+    // langState.lang = lang;
     nextTick(() => {
+      langState.updateLang(lang);
       proxy.$i18n.locale = lang;
+      console.log(langState, ":langState");
     });
   };
 
