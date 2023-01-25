@@ -3,40 +3,40 @@
   /**
    *
    */
-  import chBj from "../assets/images/ch-1.jpg";
+  import projectBj1 from "../assets/images/website-skill/project-1.jpg";
   import logoPng from "../assets/images/logo.png";
 
   const projectList = ref([
     {
-      bj: chBj,
+      bj: projectBj1,
       icon: logoPng,
     },
     {
-      bj: chBj,
+      bj: projectBj1,
       icon: logoPng,
     },
     {
-      bj: chBj,
+      bj: projectBj1,
       icon: logoPng,
     },
     {
-      bj: chBj,
+      bj: projectBj1,
       icon: logoPng,
     },
     {
-      bj: chBj,
+      bj: projectBj1,
       icon: logoPng,
     },
     {
-      bj: chBj,
+      bj: projectBj1,
       icon: logoPng,
     },
     {
-      bj: chBj,
+      bj: projectBj1,
       icon: logoPng,
     },
     {
-      bj: chBj,
+      bj: projectBj1,
       icon: logoPng,
     },
   ]);
@@ -44,7 +44,8 @@
 <template>
   <div class="max-w-screen-xl margin-auto pt-16 pb-24 project">
     <h2 class="text-center py-6 text-2xl font-bold">{{ $t("porjectPage.title") }}</h2>
-    <div class="project-list">
+    <!-- 项目列表 -->
+    <div class="lg:grid project-list">
       <div class="flex relative p-4 mb-10 item" v-for="(item, index) in projectList">
         <div class="flex-1 overflow-hidden">
           <img :src="item.bj" alt="" class="img" />
@@ -53,7 +54,9 @@
           <div class="relative my-2 title">
             <span>{{ $t(`porjectPage.list.program_${index}.title`) }}</span>
           </div>
-          <h5> {{ $t(`porjectPage.list.program_${index}.detail`) }} </h5>
+          <h5 class="text-indent mobile-text text-justify">
+            {{ $t(`porjectPage.list.program_${index}.detail`) }}
+          </h5>
         </div>
         <div class="absolute icon">
           <img :src="item.icon" alt="" />
@@ -65,11 +68,23 @@
 <style scoped lang="scss">
   .project {
     .project-list {
-      display: grid;
-      grid-template-columns: 20vw 20vw 20vw;
+      grid-template-columns: 32% 32% 32%;
+      grid-auto-rows: 33%;
       // grid-template-rows: 24vw 24vw 24vw;
-      grid-auto-rows: 26vw;
       justify-content: space-between;
+
+      .text-indent {
+        height: 135px;
+        overflow-y: auto;
+        font-size: 15px;
+        text-indent: 30px;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          width: 2px; /* 滚动条宽度， width：对应竖滚动条的宽度  height：对应横滚动条的高度*/
+          height: 1px;
+          background: gainsboro;
+        }
+      }
       .item {
         flex-direction: column;
         box-shadow: 0 3px 15px rgb(0 0 0 / 16%);
@@ -101,6 +116,21 @@
           background-color: #fff;
           > img {
             width: 56px;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 1024px) {
+      .project-list {
+        .item {
+          height: 48vh;
+          margin-left: 4vw;
+          margin-right: 4vw;
+
+          .mobile-text {
+            padding-right: 2px;
+            height: 14vh;
           }
         }
       }

@@ -1,7 +1,5 @@
 <script setup>
   import { ref, nextTick, getCurrentInstance, computed, watchEffect } from "vue";
-  import useLang from "../store/modules/lang";
-  const langState = useLang();
 
   const prpos = defineProps({
     menuList: {
@@ -29,10 +27,10 @@
     beforeClose: handleClose,
   });
 
-  const { proxy } = getCurrentInstance();
+  // const { proxy } = getCurrentInstance();
 
   // 是否是中文
-  const isZh = computed(() => (proxy.$i18n.locale === "zh" ? true : false));
+  // const isZh = computed(() => (proxy.$i18n.locale === "zh" ? true : false));
 
   // 点击菜单栏
   const changeMenu = (ind) => emits("changeMenu", ind);
@@ -43,7 +41,7 @@
     nextTick(() => {
       localStorage.setItem("lang", lang);
       console.log(lang, ":lang");
-      proxy.$i18n.locale = lang;
+      // proxy.$i18n.locale = lang;
       // langState.$state.lang = lang;
       // langState.updateLang(lang);
     });
@@ -51,7 +49,7 @@
 
   watchEffect(
     () => {
-      if (prpos.drawer) {
+      if (drawer.value) {
         document.querySelector(".el-popup-parent--hidden").style.width = "100vw";
       }
     },
@@ -76,12 +74,12 @@
       </router-link>
     </div>
     <!-- 中英文 -->
-    <el-button class="menu-item" @click="changeLang">
+    <!-- <el-button class="menu-item" @click="changeLang">
       <text :style="isZh ? '' : 'color: #e0a300'">En</text>&ensp;| &ensp;<text
         :style="isZh ? 'color: #e0a300' : ''"
         >中文</text
       >
-    </el-button>
+    </el-button> -->
   </el-drawer>
 </template>
 

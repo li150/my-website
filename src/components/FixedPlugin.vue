@@ -1,44 +1,10 @@
 <script setup>
-  import { ref, onMounted, computed } from "vue";
+  import { ref, onMounted } from "vue";
   import useLang from "../store/modules/lang";
-  import isLang from "../utils/isLang";
-  /**
-   * 图片连接引入
-   */
-  import whatsapp from "../assets/images/home/whatsapp@2x(2).png";
-  import headerQqPng from "../assets/images/home/header-qq.png";
-  import qqQrcode from "../assets/images/home/qq-qrcode.png";
-  import wechatPng from "../assets/images/home/wechat.png";
-  import wechatQrcodePng from "../assets/images/home/wechat-qrcode.png";
 
   const state = useLang();
   let currentHeight = ref(0); // 页面高度
   const isShowGoTop = ref(false); // 是否展示置顶按钮
-
-  const { isLangEn, isLangZh } = isLang();
-
-  const list = computed(() => {
-    if (isLangZh.value) {
-      return [
-        {
-          name: "QQ",
-          icon: headerQqPng,
-          qrCode: qqQrcode,
-        },
-        {
-          name: "微信",
-          icon: wechatPng,
-          qrCode: wechatQrcodePng,
-        },
-      ];
-    }
-    return [
-      {
-        name: "Whatsapp",
-        icon: whatsapp,
-      },
-    ];
-  });
 
   onMounted(() => {
     setTimeout(() => {
@@ -65,89 +31,16 @@
   });
 
   //点击
-  const clickItem = (ind) => {
-    // console.log(window.screen)
-    if (isLangZh.value && ind < 3) {
-      return;
-    }
-    switch (ind) {
-      case 0:
-        let url = `https://wa.me/+8616676308682`;
-        if (state.clientWidth < state.maxWidth) {
-          url = "https://wa.me/message/PBTGMXFBQYE3B1";
-        }
-        window.open(url);
-        break;
-      case 1:
-        window.open(`https://www.facebook.com/Junfeng-express-102734032523346`);
-        break;
-      case 2:
-        window.open(`https://www.youtube.com/channel/UCbSLPg1Om-0Geodtv0FUsmA`);
-        break;
-      case 3:
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }, 150);
-        console.log(document.body.scrollTop);
-        break;
-    }
+  const clickItem = () => {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 150);
   };
 </script>
 <template>
   <div class="right-plugin">
-    <div
-      v-for="(item, ind) of list"
-      v-show="isLangEn"
-      :key="ind"
-      class="flex item hide"
-      @click="clickItem(ind)"
-    >
-      <img :src="item.icon" class="item-icon" />
-      <div class="flex items-center hide">{{ item.name }}</div>
-    </div>
-
-    <div v-if="state.clientWidth > state.maxWidth && isLangZh">
-      <el-popover
-        v-for="(item, ind) of list"
-        :key="ind + 'ss'"
-        placement="left-start"
-        :width="220"
-        trigger="click"
-      >
-        <template #reference>
-          <div class="flex item hide">
-            <img :src="item.icon" class="item-icon" />
-            <div class="flex items-center hide">{{ item.name }}</div>
-          </div>
-        </template>
-        <img :src="item.qrCode" style="width: 200px; height: 200px; display: block" />
-      </el-popover>
-    </div>
-
-    <div v-if="state.clientWidth < state.maxWidth && isLangEn" class="item">
-      <picture>
-        <source srcset="../assets/images/home/mobile-call.png" media="(min-width:1024px)" />
-        <img src="../assets/images/home/whatsapp@2x.png" class="item-icon" @click="clickItem(0)" />
-      </picture>
-    </div>
-
-    <div v-if="state.clientWidth < state.maxWidth && isLangZh" class="item">
-      <el-popover placement="left-start" :width="220" trigger="click">
-        <template #reference>
-          <img src="../assets/images/home/wechat.png" class="item-icon" />
-        </template>
-        <img
-          src="../assets/images/home/wechat-qrcode.png"
-          style="width: 200px; height: 200px; display: block"
-        />
-      </el-popover>
-    </div>
-    <div
-      v-show="isShowGoTop"
-      class="flex item top"
-      :style="isLangZh ? 'margin:0' : ''"
-      @click="clickItem(3)"
-    >
+    <!-- 回到顶部按钮 -->
+    <div v-show="isShowGoTop" class="flex item top" @click="clickItem">
       <img src="../assets/images/home/go-top.png" class="item-icon" />
       <div class="flex items-center hide">{{ $t("footer.top") }}</div>
     </div>
@@ -161,7 +54,7 @@
     filter: blur(undefinedpx);
     background: #ffffff;
     transition: all 0.4s;
-    padding-top: 12px;
+    // padding-top: 12px;
     overflow: hidden;
     position: fixed;
     z-index: 100;
@@ -176,7 +69,7 @@
       font-size: 16px;
       font-weight: 400;
       padding-left: 11px;
-      margin-bottom: 15px;
+      // margin-bottom: 15px;
       transition: all 0.4s;
       box-sizing: border-box;
       font-family: PingFang SC-Regular, PingFang SC;
@@ -196,7 +89,7 @@
     .top {
       padding-bottom: 5px;
       color: #ffffff;
-      margin: 18px 0 0 0;
+      // margin: 18px 0 0 0;
       background: #f9dc4d;
     }
 

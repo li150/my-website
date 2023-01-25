@@ -27,7 +27,7 @@
       v-for="item in footerList"
       :key="item.id"
       class="flex items-center text-white"
-      :class="{ 'pl-12': isFlag(item.id) }"
+      :class="{ 'lg:pl-12 md:pl-2': isFlag(item.id) }"
     >
       <!-- 图标 -->
       <!-- <nuxt-icon :name="item.icon" class="svgs" filled /> -->

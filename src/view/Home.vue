@@ -1,75 +1,80 @@
 <script setup>
-  import { ref, computed } from "vue";
+  import { ref, computed, onMounted, watchEffect } from "vue";
   import { useI18n } from "vue-i18n";
+  import { useRoute } from "vue-router";
   import isLang from "../utils/isLang";
   import DefineCarousel from "../components/DefineCarousel.vue";
+  import useLang from "../store/modules/lang";
   /**
    * 图片链接引入
    */
-  import _500675756_ from "../assets/images/home/_500675756_.png";
-  import _501657450_ from "../assets/images/home/_501657450_.png";
-  import _401118931_ from "../assets/images/home/_401118931_.png";
-  import EcommerceOrderJpg from "../assets/images/home/2022-9-3/Ecommerce-Order.jpg";
+  import skill_1 from "../assets/images/website-skill/skill-1.jpg";
+  import skill_2 from "../assets/images/website-skill/skill-2.jpg";
+  import skill_3 from "../assets/images/website-skill/skill-3.jpg";
+  import skill_4 from "../assets/images/website-skill/skill-4.webp";
   import HTML5Png from "../assets/images/website-skill/HTML5.png";
-  import EcommerceOrder2 from "../assets/images/home/2022-9-3/Ecommerce-Order(2).jpg";
+  import skill_5 from "../assets/images/website-skill/skill-5.webp";
   import CSS3Png from "../assets/images/website-skill/CSS3.png";
-  import EcommerceOrderPng3 from "../assets/images/home/2022-9-3/Ecommerce-Order(3).jpg";
+  import skill_6 from "../assets/images/website-skill/skill-6.webp";
   import javascriptMapPng from "../assets/images/website-skill/javascript-map.png";
-  import EcommerceOrderBg2 from "../assets/images/home/2022-9-3/Ecommerce-Order-bg(2).jpg";
+  import skill_7 from "../assets/images/website-skill/skill-7.webp";
   import VuePng from "../assets/images/website-skill/Vue.png";
-  import EcommerceOrderBgJpg from "../assets/images/home/2022-9-3/Ecommerce-Order-bg(3).jpg";
+  import skill_8 from "../assets/images/website-skill/skill-8.webp";
   import ReactPng from "../assets/images/website-skill/React.png";
-  import EcommerceOrderBgJpg4 from "../assets/images/home/2022-9-3/Ecommerce-Order-bg(4).jpg";
+  import skill_9 from "../assets/images/website-skill/skill-9.webp";
   import AngularPng from "../assets/images/website-skill/Angular.png";
   import iphonePng from "../assets/images/iphone.png";
+  import { isSSR } from "../utils/utils";
 
   const { t } = useI18n();
+  const state = useLang();
+  const route = useRoute();
   // 详情列表
   const arrs = ref([
     {
-      bgUrl: EcommerceOrderJpg,
+      bgUrl: skill_4,
       icon: HTML5Png,
       title: t("homePage.itemOne.item_1.title"),
       tips: t("homePage.itemOne.item_1.tips"),
       active: false,
     },
     {
-      bgUrl: EcommerceOrder2,
+      bgUrl: skill_5,
       icon: CSS3Png,
       title: t("homePage.itemOne.item_2.title"),
       tips: t("homePage.itemOne.item_2.tips"),
       active: false,
     },
     {
-      bgUrl: EcommerceOrderPng3,
+      bgUrl: skill_6,
       icon: javascriptMapPng,
       title: t("homePage.itemOne.item_3.title"),
       tips: t("homePage.itemOne.item_3.tips"),
       active: false,
     },
     {
-      bgUrl: EcommerceOrderBg2,
+      bgUrl: skill_7,
       icon: VuePng,
       title: t("homePage.itemOne.item_4.title"),
       tips: t("homePage.itemOne.item_4.tips"),
       active: false,
     },
     {
-      bgUrl: EcommerceOrderBgJpg,
+      bgUrl: skill_8,
       icon: ReactPng,
       title: t("homePage.itemOne.item_5.title"),
       tips: t("homePage.itemOne.item_5.tips"),
       active: false,
     },
     {
-      bgUrl: EcommerceOrderBgJpg4,
+      bgUrl: skill_9,
       icon: AngularPng,
       title: t("homePage.itemOne.item_6.title"),
       tips: t("homePage.itemOne.item_6.tips"),
       active: false,
     },
   ]);
-  const imgs = [_500675756_, _501657450_, _401118931_];
+  const imgs = [skill_1, skill_2, skill_3];
   const itemOneList = computed(() => arrs.value);
 
   // 展示运输服务详情
@@ -98,10 +103,29 @@
   const hanlechange = (index) => {
     currentIndex.value = index;
   };
+
+  const homeItemRef = ref(null);
+  const offsetTop = ref(0);
+  onMounted(() => {
+    console.log("111111111111111");
+    offsetTop.value = homeItemRef.value.offsetTop - 70;
+    state.updateOffsetTop(offsetTop.value);
+  });
+  watchEffect(
+    () => {
+      if (route.path === "/" && route.query.type === "1") {
+        isSSR && window.scrollTo({ top: offsetTop.value, behavior: "smooth" });
+      }
+    },
+    {
+      flush: "post",
+    },
+  );
 </script>
 <template>
   <div class="banner">
-    <img src="../assets/images/banner.jpg" alt="背景图" class="" />
+    <!-- 背景 -->
+    <img src="../assets/images/banner.jpg" alt="biboom背景图" class="" />
   </div>
   <!-- 1 -->
   <div class="pb-24 home-item-one">
@@ -189,7 +213,7 @@
     </div>
   </div>
   <!-- 2 -->
-  <div class="home-item-two mobile">
+  <div class="home-item-two mobile" ref="homeItemRef">
     <div>
       <div class="title">
         <h1 class="title_one">{{ $t("homePage.itemTwo.title") }}</h1>
@@ -219,27 +243,30 @@
         </div>
       </div>
       <!-- 移动端 -->
-      <div class="flex justify-between mx-7 lg:hidden item-list">
+      <div class="grid justify-between lg:hidden item-list">
         <div class="item-list-i">
-          <el-image :src="imgs[0]" fit="fill" class="item-list-i-bannel" />
+          <el-image :src="imgs[0]" fit="cover" class="item-list-i-bannel" />
         </div>
         <div class="item-list-i">
-          <el-image :src="imgs[1]" fit="fill" class="item-list-i-bannel" />
+          <el-image :src="imgs[1]" fit="cover" class="item-list-i-bannel" />
         </div>
         <div class="item-list-i">
-          <el-image :src="imgs[2]" fit="fill" class="item-list-i-bannel" />
+          <el-image :src="imgs[2]" fit="cover" class="item-list-i-bannel" />
         </div>
-      </div>
-      <div class="flex justify-between text-center mx-7 lg:hidden">
         <div class="items-text">{{ $t("homePage.itemTwo.item_1.title") }}</div>
         <div class="items-text">{{ $t("homePage.itemTwo.item_2.title") }}</div>
         <div class="items-text">{{ $t("homePage.itemTwo.item_3.title") }}</div>
       </div>
+      <!-- <div class="flex justify-between text-center mx-7 lg:hidden">
+        <div class="items-text">{{ $t("homePage.itemTwo.item_1.title") }}</div>
+        <div class="items-text">{{ $t("homePage.itemTwo.item_2.title") }}</div>
+        <div class="items-text">{{ $t("homePage.itemTwo.item_3.title") }}</div>
+      </div> -->
     </div>
   </div>
   <!-- 3 -->
   <div class="md:bg-gray-200 home-item-three">
-    <div class="flex justify-between max-w-screen-xl margin-auto xl:max-w-full">
+    <div class="lg:flex lg:justify-between max-w-screen-xl margin-auto xl:max-w-full">
       <div class="left lg:bg-white">
         <h1>{{ $t("homePage.itemThree.title") }}</h1>
         <p>{{ $t("homePage.itemThree.tips") }}</p>
@@ -260,14 +287,16 @@
             @change="hanlechange"
           ></DefineCarousel>
         </div> -->
-        <div class="absolute top-0 left-0 right-0 bottom-0 iphone">
-          <img class="absolute top-0 left-0 right-0 bottom-0" :src="iphonePng" alt="" />
-          <div class="absolute defin-carouse">
-            <DefineCarousel
-              v-bind="carouselConfig"
-              :carousel-list="carouselList"
-              @change="hanlechange"
-            ></DefineCarousel>
+        <div class="lg:absolute mobile-iphone-init absolute0 iphone">
+          <div class="relative mobile-img">
+            <img class="lg:absolute absolute0" :src="iphonePng" alt="" />
+            <div class="absolute defin-carouse">
+              <DefineCarousel
+                v-bind="carouselConfig"
+                :carousel-list="carouselList"
+                @change="hanlechange"
+              ></DefineCarousel>
+            </div>
           </div>
         </div>
         <!-- <picture>
@@ -294,21 +323,10 @@
           <div class="item-title">
             {{ $t("homePage.itemFour.item_1.title") }}
           </div>
-          <div class="item-tips">{{ $t("homePage.itemFour.item_1.tips") }}</div>
+          <div class="text-justify item-tips">{{ $t("homePage.itemFour.item_1.tips") }}</div>
         </div>
 
         <div class="item md:mx-8 md:my-20">
-          <img
-            src="../assets/images/home/2022-9-3/Snipaste_2022-09-05_14-34-16.png"
-            class="item-icon"
-          />
-          <div class="item-title">
-            {{ $t("homePage.itemFour.item_2.title") }}
-          </div>
-          <div class="item-tips">{{ $t("homePage.itemFour.item_2.tips") }}</div>
-        </div>
-
-        <div class="item md:mx-8">
           <img
             src="../assets/images/home/2022-9-3/Snipaste_2022-09-05_14-37-48.png"
             class="item-icon"
@@ -317,7 +335,18 @@
           <div class="item-title">
             {{ $t("homePage.itemFour.item_3.title") }}
           </div>
-          <div class="item-tips">{{ $t("homePage.itemFour.item_3.tips") }}</div>
+          <div class="text-justify item-tips">{{ $t("homePage.itemFour.item_3.tips") }}</div>
+        </div>
+
+        <div class="item md:mx-8">
+          <img
+            src="../assets/images/home/2022-9-3/Snipaste_2022-09-05_14-34-16.png"
+            class="item-icon"
+          />
+          <div class="item-title">
+            {{ $t("homePage.itemFour.item_2.title") }}
+          </div>
+          <div class="text-justify item-tips">{{ $t("homePage.itemFour.item_2.tips") }}</div>
         </div>
       </div>
     </div>
@@ -363,6 +392,14 @@
     }
   }
 
+  .absolute0 {
+    // top-0 left-0 right-0 bottom-0
+    @apply top-0 left-0 right-0 bottom-0;
+  }
+  .mobile-iphone-init {
+    @apply md:relative md:flex md:justify-center;
+  }
+
   .home-item-one {
     position: relative;
     padding-top: 50px;
@@ -370,7 +407,7 @@
     height: 945px;
     background-image: url("../assets/images/home/2022-9-3/Ecommerce-Order-bg(2).jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100% 100%;
     z-index: 1;
 
     &::before {
@@ -516,13 +553,13 @@
           }
         }
         .bgctable1 {
-          background-image: url("../assets/images/home/2022-9-3/Ecommerce-Order(3).jpg");
+          background-image: url("../assets/images/website-skill/skill-4.webp");
         }
         .bgctable2 {
-          background-image: url("../assets/images/home/2022-9-3/Ecommerce-Order(2).jpg");
+          background-image: url("../assets/images/website-skill/skill-5.webp");
         }
         .bgctable3 {
-          background-image: url("../assets/images/home/2022-9-3/Ecommerce-Order(3).jpg");
+          background-image: url("../assets/images/website-skill/skill-6.webp");
         }
       }
     }
@@ -553,13 +590,13 @@
         }
       }
       .bgctable1 {
-        background-image: url("../assets/images/home/2022-9-3/Ecommerce-Order(3).jpg");
+        background-image: url("../assets/images/website-skill/skill-7.webp");
       }
       .bgctable2 {
-        background-image: url("../assets/images/home/2022-9-3/Ecommerce-Order-bg(3).jpg");
+        background-image: url("../assets/images/website-skill/skill-8.webp");
       }
       .bgctable3 {
-        background-image: url("../assets/images/home/2022-9-3/Ecommerce-Order-bg(4).jpg");
+        background-image: url("../assets/images/website-skill/skill-9.webp");
       }
     }
   }
@@ -583,6 +620,9 @@
     }
 
     .item-list {
+      grid-template-columns: 29vw 29vw 29vw;
+      padding-left: 4vw;
+      padding-right: 4vw;
       .item-list-i {
         // width: 380px;
         flex-basis: 32%;
@@ -720,21 +760,24 @@
       // right: 25.5%;
       // bottom: 12%;
       top: 66px;
-      left: 49px;
-      right: 92px;
-      bottom: 70px;
+      left: 46px;
+      right: 46px;
+      bottom: 68px;
       overflow: hidden;
       // background-color: blue;
     }
 
     .iphone-warp {
-      flex-basis: 362px;
+      flex-basis: 300px;
       flex-shrink: 0;
 
       .iphone {
         // top: -38px;
-        img {
+        .mobile-img {
           height: 100%;
+          img {
+            height: 100%;
+          }
         }
       }
     }
@@ -860,13 +903,17 @@
         .item-tips {
           // padding: 20px 0;
           line-height: 32px;
-          font-size: 17px;
+          font-size: 16px;
+          text-indent: 32px;
         }
       }
     }
   }
 
   @media screen and (max-width: 1024px) {
+    .banner {
+      height: auto;
+    }
     .home-item-one {
       height: auto;
       background-image: none;
@@ -877,14 +924,21 @@
           border: none;
           overflow: hidden;
           border-radius: 0;
-          width: 29.8667vw;
-          height: 29.8667vw;
+          // width: 29.8667vw;
+          // height: 29.8667vw;
+          width: auto;
+          height: auto;
           margin-top: 8vw;
           background-color: transparent;
+          .item-list-i-bannel {
+            height: 28vw;
+          }
         }
         .items-text {
-          width: 29.8667vw;
-          padding-top: 1.3vw;
+          // width: 29.8667vw;
+          padding-top: 1.8vw;
+          text-align: center;
+          font-size: 2.2vw;
         }
       }
     }
@@ -902,6 +956,24 @@
         height: auto;
         padding: 0;
         box-shadow: none;
+        .translate-side {
+          transform: translateX(0) !important;
+        }
+      }
+
+      .iphone-warp {
+        height: 90vw;
+        .mobile-img {
+          width: 52vw;
+          height: 50vw;
+        }
+      }
+      .defin-carouse {
+        top: 10.5vw;
+        left: 8vw;
+        right: 8vw;
+        bottom: 11vw;
+        border-radius: 0.3vw;
       }
     }
   }

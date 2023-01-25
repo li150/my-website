@@ -10,6 +10,7 @@
   import headerQqPng from "../assets/images/home/header-qq.png";
   import qqQrcodePng from "../assets/images/home/qq-qrcode.png";
   import phoneCall from "../assets/images/header/phone-call.png";
+  import { isSSR } from "../utils/utils";
 
   const { proxy } = getCurrentInstance();
   const langState = useLang();
@@ -22,10 +23,12 @@
     if (isZh.value) {
       return [
         {
+          key: "123acb",
           icon: wechatPng,
           code: wechatQrcodePng,
         },
         {
+          key: "456acb",
           icon: headerQqPng,
           code: qqQrcodePng,
         },
@@ -37,6 +40,7 @@
   const changeLang = () => {
     const lang = langState.lang === "zh" ? "en" : "zh";
     // langState.lang = lang;
+    // langState.updateSum();
     nextTick(() => {
       langState.updateLang(lang);
       proxy.$i18n.locale = lang;
@@ -87,7 +91,7 @@
         <div class="flex items-center">
           <img src="../assets/images/logo.png" class="w-12 mr-4" />
           <div>
-            Whatsapp:15016400000
+            Whatsapp:150164xxxxx
             <span class="mx-4">|</span> Email: 1449770614@qq.com
           </div>
         </div>
@@ -102,7 +106,7 @@
             />
           </div>
           <div v-else class="flex">
-            <el-popover
+            <!-- <el-popover
               v-for="(item, ind) of imgs"
               :key="ind"
               placement="bottom"
@@ -110,18 +114,28 @@
               trigger="click"
             >
               <template #reference>
-                <img :src="item.icon" class="w-10 mr-4" />
+                <img :src="item.icon" @click="hanleIndex(ind)" class="w-10 mr-4" />
               </template>
-              <img :src="item.code" style="width: 200px; height: 200px; display: block" />
-            </el-popover>
+              <img
+                :src="item.code"
+                style="width: 200px; height: 200px; display: block"
+              />
+            </el-popover> -->
+            <div v-if="isSSR">
+              <el-popover placement="bottom" :width="220" trigger="click">
+                <template #reference>
+                  <img :src="imgs[1].icon" class="w-10 mr-4" />
+                </template>
+                <img :src="imgs[1].code" style="width: 200px; height: 200px; display: block" />
+              </el-popover>
+            </div>
           </div>
-          <!-- 中英文 -->
-          <el-button style="border: none" @click="changeLang">
+          <!-- <el-button style="border: none" @click="changeLang">
             <text :style="isZh ? '' : 'color: #e0a300'">En</text>&ensp;| &ensp;<text
               :style="isZh ? 'color: #e0a300' : ''"
               >中文
             </text>
-          </el-button>
+          </el-button> -->
         </div>
       </div>
     </div>
@@ -160,13 +174,16 @@
       <div class="ml-2 font-bold">{{ $t("header.title") }}</div>
     </div>
     <!-- 移动端菜单 -->
-    <DefineDrawer
-      :menu-list="menuLists"
-      :drawer="drawer"
-      @handleClose="handleClose"
-      @closed="closed"
-      @changeMenu="changeMenu"
-    ></DefineDrawer>
+    <div v-if="isSSR">
+      <DefineDrawer
+        :menu-list="menuLists"
+        :drawer="drawer"
+        @handleClose="handleClose"
+        @closed="closed"
+        @changeMenu="changeMenu"
+      >
+      </DefineDrawer>
+    </div>
   </div>
 </template>
 

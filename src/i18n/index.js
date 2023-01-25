@@ -23,9 +23,19 @@ const i18n = createI18n({
   locale: "zh",
 });
 
-getGeoip().then((iso_code) => {
-  const lang = iso_code === "CN" ? "zh" : "en";
-  i18n.global.locale = lang;
-  // console.log(lang, "lang---lang");
-});
+// getGeoip().then((iso_code) => {
+//   const lang = iso_code === "CN" ? "zh" : "en";
+//   i18n.global.locale.value = lang;
+// });
+// async function defineCreateI18n() {
+//   const iso_code = await getGeoip();
+//   const lang = iso_code === "CN" ? "zh" : "en";
+//   return createI18n({
+//     legacy: false,
+//     messages: message,
+//     globalInjection: true,
+//     locale: lang || "zh",
+//   });
+// }
+// export default defineCreateI18n;
 export default i18n;

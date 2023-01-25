@@ -34,7 +34,7 @@ async function createServer() {
   app.use("*", async (req, res, next) => {
     // 服务 index.html - 下面我们来处理这个问题
     const url = req.originalUrl;
-    let template, html_, pinia_;
+    let template, html_, pinia_, preloadLinks_;
     try {
       // 1. 读取 index.html
       if (process.env.NODE_ENV === "production") {
@@ -42,8 +42,9 @@ async function createServer() {
         template = fs.readFileSync(path.resolve(__dirname, "dist/client/index.html"), "utf-8");
         template = await vite.transformIndexHtml(url, template);
 
-        const [html, piniaState] = await proRender(url);
+        const [html, preloadLinks, piniaState] = await proRender(url, {});
         html_ = html;
+        preloadLinks_ = preloadLinks;
         pinia_ = piniaState;
       } else {
         // ------开发环境------
@@ -60,8 +61,9 @@ async function createServer() {
         // 4. 渲染应用的 HTML。这假设 entry-server.js 导出的 `render`
         //    函数调用了适当的 SSR 框架 API。
         //    例如 ReactDOMServer.renderToString()
-        const [html, piniaState] = await render(url);
+        const [html, preloadLinks, piniaState] = await render(url, {});
         html_ = html;
+        preloadLinks_ = preloadLinks;
         pinia_ = piniaState;
       }
 
@@ -69,6 +71,7 @@ async function createServer() {
       // 5. 注入渲染后的应用程序 HTML 到模板中。
       const appHtml = template
         .replace(`<!--ssr-outlet-->`, html_)
+        .replace(`<!--preload-links-->`, preloadLinks_)
         .replace(`<!--pinia-state-->`, pinia_);
 
       // 6. 返回渲染后的 HTML。

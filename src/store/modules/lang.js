@@ -7,12 +7,15 @@ export default defineStore("lang", {
     lang: "zh",
     maxWidth: 992, //
     clientWidth: isSSR && document.body.clientWidth, //页面宽度
+    homePageServerOffsetTop: 0,
+    sum: 1,
   }),
   // state() {
   //   return {
   //     lang: "zh",
   //     maxWidth: 992, //
   //     clientWidth: isSSR && document.body.clientWidth, //页面宽度
+  //     sum: 1,
   //   };
   // },
   actions: {
@@ -20,6 +23,12 @@ export default defineStore("lang", {
       console.log(newLang, ":newLang", this.lang);
       localStorage.setItem("lang", newLang);
       this.lang = newLang;
+    },
+    updateOffsetTop(offsetTop) {
+      this.homePageServerOffsetTop = offsetTop;
+    },
+    updateSum() {
+      this.sum = this.sum + 1;
     },
   },
   // const lang = ref("zh");

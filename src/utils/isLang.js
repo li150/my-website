@@ -1,4 +1,4 @@
-import { computed } from "vue";
+import { computed, reactive } from "vue";
 import useLang from "../store/modules/lang";
 
 /**
@@ -6,6 +6,7 @@ import useLang from "../store/modules/lang";
  */
 function isLang() {
   const langState = useLang();
+  // const langState = reactive({ lang: "zh" });
   const isLangEn = computed(() => langState.lang !== "zh");
   const isLangZh = computed(() => langState.lang !== "en");
   const langFlag = computed(() => (langState.lang !== "en" ? "biboom" : "biboom"));

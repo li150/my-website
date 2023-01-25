@@ -7,7 +7,7 @@
   import useLang from "./store/modules/lang";
 
   const { proxy } = getCurrentInstance();
-  console.log(useLang(), ":useLang");
+  // console.log(useLang(), ":useLang");
   const lang = useLang();
 
   // onMounted(() => {
@@ -19,9 +19,9 @@
 </script>
 <template>
   <Header></Header>
-  <FixedPlugin></FixedPlugin>
   <div class="min-h">
     <router-view></router-view>
+    <FixedPlugin></FixedPlugin>
   </div>
   <Footer></Footer>
 </template>

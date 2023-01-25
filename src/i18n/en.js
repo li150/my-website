@@ -97,6 +97,7 @@ export default {
         6: "I have used Webpack and Vite packaging tools and optimized the front-end performance accordingly",
         7: "I have used Nuxt framework and Vite SSR to render the website server side, and have some practice for the project",
         8: "Frequent use of Git version control tools, code management, and automated deployment",
+        9: "Frequent use of Git version control tools, code management, and automated deployment",
       },
     },
     experience: {

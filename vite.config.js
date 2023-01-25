@@ -9,13 +9,32 @@ export default defineConfig({
   base: "./",
   plugins: [
     vue(),
-    // AutoImport({
-    //   resolvers: [ElementPlusResolver()],
-    // }),
-    // Components({
-    //   resolvers: [ElementPlusResolver()],
-    // }),
+    // ElementPlus({ useSource: true }),
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
   ],
+  build: {
+    minify: "terser",
+    terserOptions: {
+      compress: {
+        drop_console: true, //清除console
+        drop_debugger: true, //清除debugger
+        dead_code: true,
+      },
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: [],
+      },
+    },
+  },
+  ssr: {
+    noExternal: ["element-plus"], //ssr打包排除一些第三方库依赖化
+  },
   server: {
     port: 3000,
   },

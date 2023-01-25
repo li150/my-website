@@ -1,9 +1,11 @@
 import { createRouter, createMemoryHistory, createWebHistory } from "vue-router";
 import i18n from "../i18n";
 import { isSSR } from "../utils/utils";
+import useLang from "../store/modules/lang";
 /**
  * 在外部没有setup函数使用i18n
  */
+// const i18n = await defineCreateI18n();
 const tips = i18n.global.t;
 
 const routes = [
@@ -38,5 +40,12 @@ export default function () {
   return createRouter({
     history: isSSR ? createWebHistory() : createMemoryHistory(),
     routes,
+    scrollBehavior(to, from, next) {
+      if (to.fullPath === "/?type=1") {
+        return { top: useLang().homePageServerOffsetTop, behavior: "smooth" };
+      }
+      // 切换路由平滑到顶部
+      return { top: 0, behavior: "smooth" };
+    },
   });
 }
