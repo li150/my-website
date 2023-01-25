@@ -357,9 +357,15 @@
       <h1>{{ $t("homePage.itemFive.title") }}</h1>
       <p class="tips">{{ $t("homePage.itemFive.tips") }}</p>
       <div class="md:block lg:flex detail-info">
-        <div class="justify-center"><span></span>{{ $t("homePage.itemFive.item.tips_1") }}</div>
-        <div class="justify-center"><span></span>{{ $t("homePage.itemFive.item.tips_2") }}</div>
-        <div class="justify-center"><span></span>{{ $t("homePage.itemFive.item.tips_3") }}</div>
+        <div class="flex items-center justify-center"
+          ><span></span>{{ $t("homePage.itemFive.item.tips_2") }}</div
+        >
+        <div class="flex items-center justify-center"
+          ><span></span>{{ $t("homePage.itemFive.item.tips_3") }}</div
+        >
+        <div class="flex items-center justify-center"
+          ><span></span>{{ $t("homePage.itemFive.item.tips_1") }}</div
+        >
       </div>
       <el-popover v-if="isLangEn" placement="top" :width="220" trigger="click">
         <template #reference>
@@ -776,7 +782,7 @@
         .mobile-img {
           height: 100%;
           img {
-            height: 100%;
+            height: auto;
           }
         }
       }
@@ -833,10 +839,8 @@
         font-size: 16px;
         justify-content: center;
 
-        div {
-          display: flex;
-          align-items: center;
-          text-align: left;
+        > div {
+          margin-bottom: 2vw;
         }
 
         span {
@@ -956,8 +960,10 @@
         height: auto;
         padding: 0;
         box-shadow: none;
-        .translate-side {
-          transform: translateX(0) !important;
+        .left-item {
+          &.translate-side {
+            transform: translateX(0);
+          }
         }
       }
 
@@ -971,7 +977,7 @@
       .defin-carouse {
         top: 10.5vw;
         left: 8vw;
-        right: 8vw;
+        right: 7.9vw;
         bottom: 11vw;
         border-radius: 0.3vw;
       }

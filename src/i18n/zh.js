@@ -49,8 +49,8 @@ export default {
     itemThree: {
       title: "项目的展示",
       tips: "还在学习的路上~",
-      tips_1: "微站项目-待处理中：轮播或移入显示右边对于图片",
-      tips_2: "我的官网-待处理中：轮播或移入显示右边对于图片",
+      tips_1: "微站项目",
+      tips_2: "我的官网",
     },
     itemFour: {
       title: "项目的成果",
