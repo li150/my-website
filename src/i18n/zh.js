@@ -159,7 +159,7 @@ export default {
   },
   // 菜单栏
   header: {
-    title: "必速派",
+    title: "biboom官网",
     closed: "关闭",
     1: "首页",
     2: "方向",

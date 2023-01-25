@@ -74,7 +74,7 @@
       active: false,
     },
   ]);
-  const imgs = [skill_1, skill_2, skill_3];
+  const imgs = ref([skill_1, skill_2, skill_3]);
   const itemOneList = computed(() => arrs.value);
 
   // 展示运输服务详情
@@ -245,13 +245,13 @@
       <!-- 移动端 -->
       <div class="grid justify-between lg:hidden item-list">
         <div class="item-list-i">
-          <el-image :src="imgs[0]" fit="cover" class="item-list-i-bannel" />
+          <el-image :src="skill_1" fit="cover" class="item-list-i-bannel" />
         </div>
         <div class="item-list-i">
-          <el-image :src="imgs[1]" fit="cover" class="item-list-i-bannel" />
+          <el-image :src="skill_2" fit="cover" class="item-list-i-bannel" />
         </div>
         <div class="item-list-i">
-          <el-image :src="imgs[2]" fit="cover" class="item-list-i-bannel" />
+          <el-image :src="skill_3" fit="cover" class="item-list-i-bannel" />
         </div>
         <div class="items-text">{{ $t("homePage.itemTwo.item_1.title") }}</div>
         <div class="items-text">{{ $t("homePage.itemTwo.item_2.title") }}</div>
