@@ -245,13 +245,13 @@
       <!-- 移动端 -->
       <div class="grid justify-between lg:hidden item-list">
         <div class="item-list-i">
-          <el-image :src="skill_1" fit="cover" class="item-list-i-bannel" />
+          <el-image :src="imgs[0]" fit="cover" lazy class="item-list-i-bannel" />
         </div>
         <div class="item-list-i">
-          <el-image :src="skill_2" fit="cover" class="item-list-i-bannel" />
+          <el-image :src="imgs[1]" fit="cover" lazy class="item-list-i-bannel" />
         </div>
         <div class="item-list-i">
-          <el-image :src="skill_3" fit="cover" class="item-list-i-bannel" />
+          <el-image :src="imgs[2]" fit="cover" lazy class="item-list-i-bannel" />
         </div>
         <div class="items-text">{{ $t("homePage.itemTwo.item_1.title") }}</div>
         <div class="items-text">{{ $t("homePage.itemTwo.item_2.title") }}</div>
@@ -372,7 +372,7 @@
           <img src="../assets/images/home/wechat.png" class="scaleItem" />
         </template>
         <img
-          src="../assets/images/home/wechat-qrcode.png"
+          src="../assets/images/website-skill/wechat-qrcode.png"
           style="width: 200px; height: 200px; display: block"
         />
       </el-popover>

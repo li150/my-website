@@ -6,7 +6,7 @@
    * 图片链接引入
    */
   import wechatPng from "../assets/images/home/wechat.png";
-  import wechatQrcodePng from "../assets/images/home/wechat-qrcode.png";
+  import wechatQrcodePng from "../assets/images/website-skill/wechat-qrcode.png";
   import headerQqPng from "../assets/images/home/header-qq.png";
   import qqQrcodePng from "../assets/images/home/qq-qrcode.png";
   import phoneCall from "../assets/images/header/phone-call.png";
@@ -23,14 +23,14 @@
     if (isZh.value) {
       return [
         {
-          key: "123acb",
-          icon: wechatPng,
-          code: wechatQrcodePng,
-        },
-        {
           key: "456acb",
           icon: headerQqPng,
           code: qqQrcodePng,
+        },
+        {
+          key: "123acb",
+          icon: wechatPng,
+          code: wechatQrcodePng,
         },
       ];
     }

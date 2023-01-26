@@ -26,11 +26,6 @@ export default defineConfig({
         dead_code: true,
       },
     },
-    rollupOptions: {
-      output: {
-        manualChunks: [],
-      },
-    },
   },
   ssr: {
     noExternal: ["element-plus"], //ssr打包排除一些第三方库依赖化
