@@ -24,6 +24,8 @@
   import skill_9 from "../assets/images/website-skill/skill-9.webp";
   import AngularPng from "../assets/images/website-skill/Angular.png";
   import iphonePng from "../assets/images/iphone.png";
+  import wzHomePng from "../assets/images/website-skill/wzhome.jpg";
+  import biboomHome from "../assets/images/website-skill/biboomhome.jpg";
   import { isSSR } from "../utils/utils";
 
   const { t } = useI18n();
@@ -98,7 +100,7 @@
     initialIndex: 0,
     interval: 3000,
   });
-  const carouselList = ref([1, 2]);
+  const carouselList = ref([{ url: wzHomePng }, { url: biboomHome }]);
   const currentIndex = ref(0);
   const hanlechange = (index) => {
     currentIndex.value = index;
@@ -627,8 +629,7 @@
 
     .item-list {
       grid-template-columns: 29vw 29vw 29vw;
-      padding-left: 4vw;
-      padding-right: 4vw;
+
       .item-list-i {
         // width: 380px;
         flex-basis: 32%;
@@ -769,6 +770,7 @@
       left: 46px;
       right: 46px;
       bottom: 95px;
+      border-radius: 8px;
       overflow: hidden;
       // background-color: blue;
     }
@@ -924,6 +926,10 @@
     }
     .home-item-two {
       &.mobile {
+        .item-list {
+          padding-left: 4vw;
+          padding-right: 4vw;
+        }
         .item-list-i {
           border: none;
           overflow: hidden;
@@ -979,7 +985,7 @@
         left: 8vw;
         right: 7.9vw;
         bottom: 11vw;
-        border-radius: 0.3vw;
+        border-radius: 1.3vw;
       }
     }
   }

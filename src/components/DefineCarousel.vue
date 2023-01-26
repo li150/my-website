@@ -7,8 +7,8 @@
 </script>
 <template>
   <el-carousel v-bind="$attrs">
-    <el-carousel-item v-for="item in props.carouselList" :key="item">
-      <img class="img" src="../assets/images/website-skill/app1.webp" alt="" />
+    <el-carousel-item v-for="item in props.carouselList" :key="item.url">
+      <img class="img" :src="item.url" alt="" />
     </el-carousel-item>
   </el-carousel>
 </template>
