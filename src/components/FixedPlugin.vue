@@ -60,6 +60,7 @@
     z-index: 100;
     right: 0;
     top: 60vh;
+    user-select: none;
 
     .item {
       width: 151px;

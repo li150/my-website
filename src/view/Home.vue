@@ -765,10 +765,10 @@
       // left: 14%;
       // right: 25.5%;
       // bottom: 12%;
-      top: 66px;
+      top: 63px;
       left: 46px;
       right: 46px;
-      bottom: 68px;
+      bottom: 95px;
       overflow: hidden;
       // background-color: blue;
     }
