@@ -122,6 +122,10 @@
     }
 
     @media screen and (max-width: 1024px) {
+      .project {
+        padding-top: 1vw;
+        padding-bottom: 1vw;
+      }
       .project-list {
         .item {
           height: 48vh;
