@@ -26,6 +26,7 @@
   "devDependencies": {
     "@nuxt/devalue": "^2.0.0",
     "@vitejs/plugin-vue": "^4.0.0",
+    "@vueuse/head": "^1.0.23",
     "cross-env": "^7.0.3",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.5.0",

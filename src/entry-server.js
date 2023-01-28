@@ -1,11 +1,12 @@
 import createApp from "./main";
 import { renderToString } from "@vue/server-renderer";
 import devalue from "@nuxt/devalue";
+import { renderHeadToString } from "@vueuse/head";
 /**
  * 返回生成html字符及pinia数据
  */
 export async function render(url, manifest) {
-  const { app, router, initialState } = createApp();
+  const { app, router, initialState, head } = createApp();
   // 先加载一个页面
   router.push(url);
   await router.isReady();
@@ -14,12 +15,15 @@ export async function render(url, manifest) {
   // 获取页面的HTML字符串
   const html = await renderToString(app, ctx);
 
+  //
+  const { headTags } = await renderHeadToString(head);
+
   const preloadLinks = renderPreloadLinks(ctx.modules, manifest);
 
   // https://pinia.vuejs.org/ssr/#state-hydration
   const piniaState = devalue(initialState.pinia);
 
-  return [html, preloadLinks, piniaState];
+  return [html, preloadLinks, piniaState, headTags];
 }
 
 function renderPreloadLinks(modules, manifest) {

@@ -2,6 +2,7 @@
   import { ref, computed, onMounted, watchEffect } from "vue";
   import { useI18n } from "vue-i18n";
   import { useRoute } from "vue-router";
+  import { useHead } from "@vueuse/head";
   import isLang from "../utils/isLang";
   import DefineCarousel from "../components/DefineCarousel.vue";
   import useLang from "../store/modules/lang";
@@ -108,6 +109,27 @@
 
   const homeItemRef = ref(null);
   const offsetTop = ref(0);
+
+  useHead({
+    meta: [
+      {
+        name: "title",
+        content: "biboom的官网的首页",
+      },
+      {
+        name: "author",
+        content: "biboom-1449770614@qq.com",
+      },
+      {
+        name: "description",
+        content: "这是biboom的官网的首页",
+      },
+      {
+        name: "keywords",
+        content: "biboom-前端的专业技能,biboom-我擅长的方向,biboom-项目的展示",
+      },
+    ],
+  });
   onMounted(() => {
     console.log("111111111111111");
     offsetTop.value = homeItemRef.value.offsetTop - 70;

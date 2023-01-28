@@ -13,6 +13,7 @@ import i18n from "./i18n";
 import { createStore } from "./store";
 import { getGeoip, isSSR } from "./utils/utils";
 import { createPinia } from "pinia";
+import { createHead } from "@vueuse/head";
 
 // app.use(ElementPlus);
 // let comp;
@@ -24,6 +25,7 @@ import { createPinia } from "pinia";
 export default function createApp() {
   const pinia = createPinia();
   const app = createSSRApp(App);
+  const head = createHead();
   const router = routers();
   // const i18n = await defineCreateI18n();
 
@@ -51,8 +53,9 @@ export default function createApp() {
     prefix: 100,
     current: 0,
   });
+  app.use(head);
   app.use(i18n);
   app.use(router);
   app.use(pinia);
-  return { app, router, pinia, initialState };
+  return { app, router, pinia, initialState, head };
 }

@@ -1,4 +1,5 @@
 <script setup>
+  import { useHead } from "@vueuse/head";
   import isLang from "../utils/isLang";
   // 判断是否是中英文
   const { langFlag } = isLang();
@@ -7,6 +8,27 @@
    *
    * 2.工作经验
    */
+
+  useHead({
+    meta: [
+      {
+        name: "title",
+        content: "biboom的官网的关于我",
+      },
+      {
+        name: "author",
+        content: "biboom-1449770614@qq.com",
+      },
+      {
+        name: "description",
+        content: "这是biboom的官网的关于我",
+      },
+      {
+        name: "keywords",
+        content: "biboom-我的技能,biboom-工作经验",
+      },
+    ],
+  });
 </script>
 <template>
   <div class="about">

@@ -1,5 +1,6 @@
 <script setup>
   import { ref } from "vue";
+  import { useHead } from "@vueuse/head";
   /**
    *
    */
@@ -40,6 +41,28 @@
       icon: logoPng,
     },
   ]);
+
+  useHead({
+    meta: [
+      {
+        name: "title",
+        content: "biboom的官网的项目",
+      },
+      {
+        name: "author",
+        content: "biboom-1449770614@qq.com",
+      },
+      {
+        name: "description",
+        content: "这是biboom的官网的项目",
+      },
+      {
+        name: "keywords",
+        content:
+          "biboom-Beespal官网（PC/Mobile）,biboom-君丰国际快递集运转运（小程序）,biboom-项目的可信采集系统+可视化大屏",
+      },
+    ],
+  });
 </script>
 <template>
   <div class="max-w-screen-xl margin-auto pt-16 pb-24 project">
