@@ -25,7 +25,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "project" */ "../view/Project.vue"),
   },
   {
-    path: "/:catchAll(.*)", //不识别path自动匹配404
+    path: "/:pathMatch(.*)", //不识别path自动匹配404
     redirect: "/",
   },
   // {
