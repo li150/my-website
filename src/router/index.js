@@ -24,6 +24,10 @@ const routes = [
     name: tips(`header.${3}`),
     component: () => import(/* webpackChunkName: "project" */ "../view/Project.vue"),
   },
+  {
+    path: "/:catchAll(.*)", //不识别path自动匹配404
+    redirect: "/",
+  },
   // {
   //   path: "/review",
   //   name: tips(`header.${5}`),
