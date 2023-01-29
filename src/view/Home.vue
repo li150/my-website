@@ -27,6 +27,7 @@
   import iphonePng from "../assets/images/iphone.png";
   import wzHomePng from "../assets/images/website-skill/wzhome.jpg";
   import biboomHome from "../assets/images/website-skill/biboomhome.jpg";
+  import jyxcxHome from "../assets/images/website-skill/jyxcx.jpg";
   import { isSSR } from "../utils/utils";
 
   const { t } = useI18n();
@@ -101,7 +102,7 @@
     initialIndex: 0,
     interval: 3000,
   });
-  const carouselList = ref([{ url: wzHomePng }, { url: biboomHome }]);
+  const carouselList = ref([{ url: wzHomePng }, { url: biboomHome }, { url: jyxcxHome }]);
   const currentIndex = ref(0);
   const hanlechange = (index) => {
     currentIndex.value = index;
@@ -301,6 +302,10 @@
         <div class="flex left-item" :class="{ 'translate-side': currentIndex === 1 }">
           <span>02</span>
           <p>{{ $t("homePage.itemThree.tips_2") }}</p>
+        </div>
+        <div class="flex left-item" :class="{ 'translate-side': currentIndex === 2 }">
+          <span>03</span>
+          <p>{{ $t("homePage.itemThree.tips_3") }}</p>
         </div>
       </div>
       <div class="relative iphone-warp">
@@ -735,15 +740,11 @@
         font-size: 26px;
         color: #333333;
         line-height: 42px;
-        padding-top: 37px;
+        padding-top: 26px;
         transition: transform 1s;
 
         &.translate-side {
           transform: translateX(36px);
-        }
-
-        &:nth-child(4) {
-          padding-bottom: 18px;
         }
 
         &::before {

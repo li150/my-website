@@ -51,6 +51,7 @@ export default {
       tips: "还在学习的路上~",
       tips_1: "微站项目",
       tips_2: "我的官网",
+      tips_3: "君丰国际快递集运转运小程",
     },
     itemFour: {
       title: "项目的成果",
