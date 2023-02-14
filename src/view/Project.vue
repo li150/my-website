@@ -1,6 +1,7 @@
 <script setup>
   import { ref } from "vue";
   import { useHead } from "@vueuse/head";
+  import { getRandomInt } from "../utils/utils";
   /**
    *
    */
@@ -69,9 +70,17 @@
     <h2 class="text-center py-6 text-2xl font-bold">{{ $t("porjectPage.title") }}</h2>
     <!-- 项目列表 -->
     <div class="lg:grid project-list">
-      <div class="flex relative p-4 mb-10 item" v-for="(item, index) in projectList">
-        <div class="flex-1 overflow-hidden">
+      <div class="flex relative p-4 mb-10 project-item" v-for="(item, index) in projectList">
+        <div class="relative flex-1 overflow-hidden">
           <img :src="item.bj" alt="" class="img" />
+          <div class="absolute top-0 left-0 right-0 flex raindrop-box">
+            <div
+              v-once
+              class="raindrop"
+              v-for="item in 35"
+              :style="`--raindrop: ${getRandomInt(1, 2)}`"
+            ></div>
+          </div>
         </div>
         <div class="flex-1 p-3">
           <div class="relative my-2 title">
@@ -96,6 +105,18 @@
       // grid-template-rows: 24vw 24vw 24vw;
       justify-content: space-between;
 
+      .raindrop-box {
+        justify-content: space-around;
+        .raindrop {
+          width: 1px;
+          height: 5px;
+          background-color: #00ffff85;
+          margin-left: 8px;
+          animation: raindropMove 3s infinite;
+          animation-duration: calc(var(--raindrop) * 5s);
+        }
+      }
+
       .text-indent {
         height: 135px;
         overflow-y: auto;
@@ -108,7 +129,7 @@
           background: gainsboro;
         }
       }
-      .item {
+      .project-item {
         flex-direction: column;
         box-shadow: 0 3px 15px rgb(0 0 0 / 16%);
         .img {
@@ -150,7 +171,7 @@
         padding-bottom: 1vw;
       }
       .project-list {
-        .item {
+        .project-item {
           height: 48vh;
           margin-left: 4vw;
           margin-right: 4vw;
@@ -161,6 +182,15 @@
           }
         }
       }
+    }
+  }
+
+  @keyframes raindropMove {
+    from {
+      transform: translateY(-2em) scale(0);
+    }
+    to {
+      transform: translateY(14em) scale(1);
     }
   }
 </style>
